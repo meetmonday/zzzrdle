@@ -79,9 +79,8 @@ body {
 }
 
 .game__header {
-  text-align: center;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
@@ -97,6 +96,8 @@ body {
 .logo__icon {
   height: 48px;
   width: auto;
+  display: block;
+  margin-top: 8px;
 }
 
 .logo__mark {
@@ -112,7 +113,7 @@ body {
 }
 
 .logo__text {
-  font-size: 2.4rem;
+  font-size: 1.4rem;
   font-weight: 700;
   margin: 0;
   color: var(--text);
@@ -874,6 +875,11 @@ body {
 /* Responsive --------------------------------------------------------------- */
 
 @media (max-width: 620px) {
+  .game__header {
+    flex-direction: column;
+    text-align: center;
+  }
+
   .game {
     padding: 18px 12px 0;
     gap: 16px;

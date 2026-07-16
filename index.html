@@ -26,10 +26,8 @@
     <header class="game__header">
       <div class="logo">
         <img src="logo.svg" alt="" class="logo__icon" width="48" height="52">
-        <span class="logo__mark">ZZZ</span>
         <h1 class="logo__text">rdle</h1>
       </div>
-      <p class="game__subtitle">Guess the Zenless Zone Zero agent</p>
 
       <div class="mode-switch" role="tablist" aria-label="Game mode">
         <button class="mode-switch__btn is-active" data-mode="daily" role="tab" aria-selected="true">Daily</button>
@@ -38,17 +36,17 @@
         <button id="help-btn" class="help-btn" type="button" aria-label="How to play">?</button>
       </div>
 
-      <div id="daily-timer" class="timer timer--header" hidden>
-        <span class="timer__label">Next agent in</span>
-        <span id="timer-value" class="timer__value">--:--:--</span>
-      </div>
     </header>
 
     <section class="board" id="board" aria-label="Guesses"></section>
 
     <div class="new-game-area">
+      <div id="daily-timer" class="timer timer--header" hidden>
+        <span class="timer__label">Next agent in</span>
+        <span id="timer-value" class="timer__value">--:--:--</span>
+      </div>
       <button id="new-practice-btn" class="new-game-btn" type="button" hidden>New game</button>
-      <span id="new-game-hint" class="new-game-hint" hidden>or press Shift + Enter</span>
+      <span id="new-game-hint" class="new-game-hint" hidden>Shift + Enter</span>
     </div>
 
     <section class="input-panel" id="input-panel">

@@ -376,9 +376,6 @@
     els.streakBadge.hidden = mode !== 'streak';
     if (mode === 'streak') {
       els.streakBadge.textContent = `Streak ${state.streak.current}`;
-      els.newPracticeBtn.textContent = 'New streak game';
-    } else if (mode === 'practice') {
-      els.newPracticeBtn.textContent = 'New practice game';
     }
   }
 
@@ -596,9 +593,9 @@
     if (mode === 'daily') {
       els.practiceBtn.textContent = won ? 'Play practice' : 'Try practice';
     } else if (mode === 'streak') {
-      els.practiceBtn.textContent = 'New streak game';
+      els.practiceBtn.textContent = 'New game';
     } else {
-      els.practiceBtn.textContent = 'New practice game';
+      els.practiceBtn.textContent = 'New game';
     }
     els.shareStatus.textContent = '';
 
