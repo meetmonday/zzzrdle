@@ -6,11 +6,13 @@
     "specialty": "Stun",
     "attackType": "Slash",
     "faction": "Cunning Hares",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle01.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Cunning_Hares.png"
+    "factionIcon": "/factions/Cunning_Hares.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1021,
@@ -19,11 +21,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "Cunning Hares",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle11.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Cunning_Hares.png"
+    "factionIcon": "/factions/Cunning_Hares.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1031,
@@ -32,11 +36,13 @@
     "specialty": "Support",
     "attackType": "Strike",
     "faction": "Cunning Hares",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle12.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Support.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Cunning_Hares.png"
+    "factionIcon": "/factions/Cunning_Hares.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1041,
@@ -45,11 +51,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "New Eridu Defense Force",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle05.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Defense_Force_-_Silver_Squad.png"
+    "factionIcon": "/factions/Obol_Squad.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1051,
@@ -58,11 +66,13 @@
     "specialty": "Rupture",
     "attackType": "Strike",
     "faction": "Spook Shack",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle52.png",
     "attributeIcon": "/attribute/Ice.png",
     "specialtyIcon": "/specialty/Rupture.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Spook_Shack.png"
+    "factionIcon": "/factions/Spook_Shack.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1061,
@@ -71,11 +81,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "Victoria Housekeeping Co.",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle09.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Victoria_Housekeeping.png"
+    "factionIcon": "/factions/Victoria_Housekeeping.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1071,
@@ -84,11 +96,13 @@
     "specialty": "Defense",
     "attackType": "Slash",
     "faction": "Sons of Calydon",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle25.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Defense.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Sons_of_Calydon.png"
+    "factionIcon": "/factions/Sons_of_Calydon.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1081,
@@ -97,11 +111,13 @@
     "specialty": "Attack",
     "attackType": "Pierce",
     "faction": "Cunning Hares",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle10.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Pierce.png",
-    "factionIcon": "/factions/Cunning_Hares.png"
+    "factionIcon": "/factions/Cunning_Hares.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1091,
@@ -110,11 +126,13 @@
     "specialty": "Anomaly",
     "attackType": "Slash",
     "faction": "Hollow Special Operations Section 6",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle13.png",
     "attributeIcon": "/attribute/Ice.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Hollow_Special_Operations_Section_6.png"
+    "factionIcon": "/factions/Hollow_Special_Operations_Section_6.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1101,
@@ -123,11 +141,13 @@
     "specialty": "Stun",
     "attackType": "Strike",
     "faction": "Belobog Heavy Industries",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle14.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Belobog_Heavy_Industries.png"
+    "factionIcon": "/factions/Belobog_Heavy_Industries.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1111,
@@ -136,11 +156,13 @@
     "specialty": "Attack",
     "attackType": "Pierce",
     "faction": "Belobog Heavy Industries",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle15.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Pierce.png",
-    "factionIcon": "/factions/Belobog_Heavy_Industries.png"
+    "factionIcon": "/factions/Belobog_Heavy_Industries.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1121,
@@ -149,11 +171,13 @@
     "specialty": "Defense",
     "attackType": "Strike",
     "faction": "Belobog Heavy Industries",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle16.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Defense.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Belobog_Heavy_Industries.png"
+    "factionIcon": "/factions/Belobog_Heavy_Industries.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1131,
@@ -162,11 +186,13 @@
     "specialty": "Support",
     "attackType": "Slash",
     "faction": "Hollow Special Operations Section 6",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle17.png",
     "attributeIcon": "/attribute/Ice.png",
     "specialtyIcon": "/specialty/Support.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Hollow_Special_Operations_Section_6.png"
+    "factionIcon": "/factions/Hollow_Special_Operations_Section_6.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1141,
@@ -175,11 +201,13 @@
     "specialty": "Stun",
     "attackType": "Strike",
     "faction": "Victoria Housekeeping Co.",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle18.png",
     "attributeIcon": "/attribute/Ice.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Victoria_Housekeeping.png"
+    "factionIcon": "/factions/Victoria_Housekeeping.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1151,
@@ -188,11 +216,13 @@
     "specialty": "Support",
     "attackType": "Strike",
     "faction": "Sons of Calydon",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle27.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Support.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Sons_of_Calydon.png"
+    "factionIcon": "/factions/Sons_of_Calydon.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1161,
@@ -201,11 +231,13 @@
     "specialty": "Stun",
     "attackType": "Strike",
     "faction": "Sons of Calydon",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle26.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Sons_of_Calydon.png"
+    "factionIcon": "/factions/Sons_of_Calydon.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1171,
@@ -214,11 +246,13 @@
     "specialty": "Anomaly",
     "attackType": "Pierce",
     "faction": "Sons of Calydon",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle32.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Pierce.png",
-    "factionIcon": "/factions/Sons_of_Calydon.png"
+    "factionIcon": "/factions/Sons_of_Calydon.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1181,
@@ -227,11 +261,13 @@
     "specialty": "Anomaly",
     "attackType": "Pierce",
     "faction": "Belobog Heavy Industries",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle20.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Pierce.png",
-    "factionIcon": "/factions/Belobog_Heavy_Industries.png"
+    "factionIcon": "/factions/Belobog_Heavy_Industries.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1191,
@@ -240,11 +276,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "Victoria Housekeeping Co.",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle21.png",
     "attributeIcon": "/attribute/Ice.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Victoria_Housekeeping.png"
+    "factionIcon": "/factions/Victoria_Housekeeping.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1201,
@@ -253,11 +291,13 @@
     "specialty": "Attack",
     "attackType": "Pierce",
     "faction": "Hollow Special Operations Section 6",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle35.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Pierce.png",
-    "factionIcon": "/factions/Hollow_Special_Operations_Section_6.png"
+    "factionIcon": "/factions/Hollow_Special_Operations_Section_6.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1211,
@@ -266,11 +306,13 @@
     "specialty": "Support",
     "attackType": "Strike",
     "faction": "Victoria Housekeeping Co.",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle22.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Support.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Victoria_Housekeeping.png"
+    "factionIcon": "/factions/Victoria_Housekeeping.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1221,
@@ -279,11 +321,13 @@
     "specialty": "Anomaly",
     "attackType": "Slash",
     "faction": "Hollow Special Operations Section 6",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle31.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Hollow_Special_Operations_Section_6.png"
+    "factionIcon": "/factions/Hollow_Special_Operations_Section_6.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1241,
@@ -292,11 +336,13 @@
     "specialty": "Attack",
     "attackType": "Pierce",
     "faction": "New Eridu Public Security",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle23.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Pierce.png",
-    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png"
+    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1251,
@@ -305,11 +351,13 @@
     "specialty": "Stun",
     "attackType": "Strike",
     "faction": "New Eridu Public Security",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle29.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png"
+    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1261,
@@ -318,11 +366,13 @@
     "specialty": "Anomaly",
     "attackType": "Slash",
     "faction": "New Eridu Public Security",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle24.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png"
+    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1271,
@@ -331,11 +381,13 @@
     "specialty": "Defense",
     "attackType": "Slash",
     "faction": "New Eridu Public Security",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle30.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Defense.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png"
+    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1281,
@@ -344,11 +396,13 @@
     "specialty": "Anomaly",
     "attackType": "Slash",
     "faction": "Sons of Calydon",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle28.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Sons_of_Calydon.png"
+    "factionIcon": "/factions/Sons_of_Calydon.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1291,
@@ -357,11 +411,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "Mockingbird",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle42.png",
     "attributeIcon": "/attribute/Ice.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Mockingbird.png"
+    "factionIcon": "/factions/Mockingbird.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1301,
@@ -370,11 +426,13 @@
     "specialty": "Attack",
     "attackType": "Pierce",
     "faction": "New Eridu Defense Force",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle49.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Pierce.png",
-    "factionIcon": "/factions/Defense_Force_-_Silver_Squad.png"
+    "factionIcon": "/factions/Obol_Squad.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1311,
@@ -383,11 +441,13 @@
     "specialty": "Support",
     "attackType": "Strike",
     "faction": "Stars of Lyra",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle36.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Support.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Stars_of_Lyra.png"
+    "factionIcon": "/factions/Stars_of_Lyra.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1321,
@@ -396,11 +456,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "Stars of Lyra",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle37.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Stars_of_Lyra.png"
+    "factionIcon": "/factions/Stars_of_Lyra.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1331,
@@ -409,11 +471,13 @@
     "specialty": "Anomaly",
     "attackType": "Slash",
     "faction": "Mockingbird",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle41.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Mockingbird.png"
+    "factionIcon": "/factions/Mockingbird.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1341,
@@ -422,11 +486,13 @@
     "specialty": "Defense",
     "attackType": "Slash",
     "faction": "Krampus Compliance Authority",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle56.png",
     "attributeIcon": "/attribute/Ice.png",
     "specialtyIcon": "/specialty/Defense.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Krampus_Compliance_Authority.png"
+    "factionIcon": "/factions/Krampus_Compliance_Authority.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1351,
@@ -435,11 +501,13 @@
     "specialty": "Stun",
     "attackType": "Slash",
     "faction": "Sons of Calydon",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle38.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Sons_of_Calydon.png"
+    "factionIcon": "/factions/Sons_of_Calydon.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1361,
@@ -448,11 +516,13 @@
     "specialty": "Stun",
     "attackType": "Pierce",
     "faction": "New Eridu Defense Force",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle39.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Pierce.png",
-    "factionIcon": "/factions/Defense_Force_-_Silver_Squad.png"
+    "factionIcon": "/factions/Obol_Squad.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1371,
@@ -461,11 +531,13 @@
     "specialty": "Rupture",
     "attackType": "Strike",
     "faction": "Yunkui Summit",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle44.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Rupture.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Yunkui_Summit.png"
+    "factionIcon": "/factions/Yunkui_Summit.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1381,
@@ -474,11 +546,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "New Eridu Defense Force",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle40.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Defense_Force_-_Silver_Squad.png"
+    "factionIcon": "/factions/Obol_Squad.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1391,
@@ -487,11 +561,13 @@
     "specialty": "Stun",
     "attackType": "Strike",
     "faction": "Yunkui Summit",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle43.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Yunkui_Summit.png"
+    "factionIcon": "/factions/Yunkui_Summit.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1401,
@@ -500,11 +576,13 @@
     "specialty": "Anomaly",
     "attackType": "Slash",
     "faction": "Spook Shack",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle46.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Spook_Shack.png"
+    "factionIcon": "/factions/Spook_Shack.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1411,
@@ -513,11 +591,13 @@
     "specialty": "Support",
     "attackType": "Strike",
     "faction": "Spook Shack",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle47.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Support.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Spook_Shack.png"
+    "factionIcon": "/factions/Spook_Shack.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1421,
@@ -526,11 +606,13 @@
     "specialty": "Defense",
     "attackType": "Strike",
     "faction": "Yunkui Summit",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle45.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Defense.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Yunkui_Summit.png"
+    "factionIcon": "/factions/Yunkui_Summit.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1431,
@@ -539,11 +621,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "Yunkui Summit",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle55.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Yunkui_Summit.png"
+    "factionIcon": "/factions/Yunkui_Summit.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1441,
@@ -552,11 +636,13 @@
     "specialty": "Rupture",
     "attackType": "Slash",
     "faction": "Spook Shack",
+    "rarity": "A",
     "image": "https://enka.network/ui/zzz/IconRoleCircle51.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Rupture.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Spook_Shack.png"
+    "factionIcon": "/factions/Spook_Shack.png",
+    "rarityIcon": "/rarity/A.png"
   },
   {
     "id": 1451,
@@ -565,11 +651,13 @@
     "specialty": "Support",
     "attackType": "Strike",
     "faction": "Spook Shack",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle50.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Support.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Spook_Shack.png"
+    "factionIcon": "/factions/Spook_Shack.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1461,
@@ -578,11 +666,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "New Eridu Defense Force",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle48.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Defense_Force_-_Silver_Squad.png"
+    "factionIcon": "/factions/Obol_Squad.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1471,
@@ -591,11 +681,13 @@
     "specialty": "Rupture",
     "attackType": "Strike",
     "faction": "Krampus Compliance Authority",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle53.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Rupture.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Krampus_Compliance_Authority.png"
+    "factionIcon": "/factions/Krampus_Compliance_Authority.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1481,
@@ -604,11 +696,13 @@
     "specialty": "Stun",
     "attackType": "Slash",
     "faction": "Krampus Compliance Authority",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle54.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Krampus_Compliance_Authority.png"
+    "factionIcon": "/factions/Krampus_Compliance_Authority.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1491,
@@ -617,11 +711,13 @@
     "specialty": "Support",
     "attackType": "Strike",
     "faction": "Angels of Delusion",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle58.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Support.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Angels_of_Delusion.png"
+    "factionIcon": "/factions/Angels_of_Delusion.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1501,
@@ -630,11 +726,13 @@
     "specialty": "Anomaly",
     "attackType": "Strike",
     "faction": "Angels of Delusion",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle57.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Angels_of_Delusion.png"
+    "factionIcon": "/factions/Angels_of_Delusion.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1511,
@@ -643,11 +741,13 @@
     "specialty": "Stun",
     "attackType": "Strike",
     "faction": "Angels of Delusion",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle59.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/Angels_of_Delusion.png"
+    "factionIcon": "/factions/Angels_of_Delusion.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1521,
@@ -656,11 +756,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "New Eridu Public Security",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle60.png",
     "attributeIcon": "/attribute/Electric.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png"
+    "factionIcon": "/factions/Criminal_Investigation_Special_Response_Team.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1531,
@@ -669,11 +771,13 @@
     "specialty": "Rupture",
     "attackType": "Slash",
     "faction": "Cunning Hares",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle62.png",
     "attributeIcon": "/attribute/Physical.png",
     "specialtyIcon": "/specialty/Rupture.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Cunning_Hares.png"
+    "factionIcon": "/factions/Cunning_Hares.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1541,
@@ -682,11 +786,13 @@
     "specialty": "Anomaly",
     "attackType": "Slash",
     "faction": "Krampus Compliance Authority",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle61.png",
     "attributeIcon": "/attribute/Ice.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Krampus_Compliance_Authority.png"
+    "factionIcon": "/factions/Krampus_Compliance_Authority.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1551,
@@ -695,11 +801,13 @@
     "specialty": "Attack",
     "attackType": "Slash",
     "faction": "Phaethon",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle63.png",
     "attributeIcon": "/attribute/Ether.png",
     "specialtyIcon": "/specialty/Attack.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/Phaethon.png"
+    "factionIcon": "/factions/Phaethon.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1561,
@@ -708,11 +816,13 @@
     "specialty": "Anomaly",
     "attackType": "Slash",
     "faction": "Roscaelifer External Strategy Department",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle64.png",
     "attributeIcon": "/attribute/Wind.png",
     "specialtyIcon": "/specialty/Anomaly.png",
     "attackTypeIcon": "/attackType/Slash.png",
-    "factionIcon": "/factions/External_Strategy_Department.png"
+    "factionIcon": "/factions/External_Strategy_Department.png",
+    "rarityIcon": "/rarity/S.png"
   },
   {
     "id": 1571,
@@ -721,10 +831,12 @@
     "specialty": "Stun",
     "attackType": "Strike",
     "faction": "Roscaelifer External Strategy Department",
+    "rarity": "S",
     "image": "https://enka.network/ui/zzz/IconRoleCircle65.png",
     "attributeIcon": "/attribute/Fire.png",
     "specialtyIcon": "/specialty/Stun.png",
     "attackTypeIcon": "/attackType/Strike.png",
-    "factionIcon": "/factions/External_Strategy_Department.png"
+    "factionIcon": "/factions/External_Strategy_Department.png",
+    "rarityIcon": "/rarity/S.png"
   }
 ]

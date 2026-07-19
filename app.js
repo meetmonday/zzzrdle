@@ -2,7 +2,7 @@
   'use strict';
 
   // Bump the version when data/characters.json changes so returning users get the fresh data.
-  const DATA_URL = 'data/characters.json?v=1';
+  const DATA_URL = 'data/characters.json?v=2';
   const STORAGE_KEY = 'zzzrdle-v1';
   const DAILY_ATTEMPTS = 5;
   const ATTRIBUTES = [
@@ -10,6 +10,7 @@
     { key: 'specialty', label: 'Specialty' },
     { key: 'attackType', label: 'Attack' },
     { key: 'faction', label: 'Faction' },
+    { key: 'rarity', label: 'Rarity' },
   ];
 
   const els = {
@@ -288,7 +289,7 @@
       const icon = guess[iconKey] || '';
       const tile = createTile(`
         <img class="tile__icon" src="static${escapeAttr(icon)}" alt="" loading="lazy" onerror="this.style.display='none'">
-        <span class="tile__label">${escapeHtml(value)}</span>
+        ${key !== 'rarity' ? `<span class="tile__label">${escapeHtml(value)}</span>` : ''}
       `, []);
       tile.dataset.correct = correct;
       row.appendChild(tile);
@@ -482,6 +483,11 @@
         }, revealDelay);
       }
     } else {
+      const allMatch = ATTRIBUTES.every(({ key }) => char[key] === target[key]);
+      if (allMatch) {
+        renderMessage('All attributes match! But this is a different agent...', 'hint');
+        shakeInput();
+      }
       announce(`${char.name}: ${guesses.filter((g, i) => {
         const t = currentTarget();
         return ATTRIBUTES.some(({ key }) => g[key] === t[key]);

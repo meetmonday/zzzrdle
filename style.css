@@ -276,6 +276,10 @@ body {
   color: var(--danger);
 }
 
+.message--hint {
+  color: var(--accent);
+}
+
 .new-game-btn {
   appearance: none;
   border: none;
@@ -421,7 +425,7 @@ body {
 
 .guess-row {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 2fr) repeat(5, minmax(0, 1fr));
   gap: 5px;
   align-items: stretch;
   animation: slideIn 0.35s ease backwards;
@@ -904,7 +908,7 @@ body {
   }
 
   .guess-row {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-template-rows: auto auto;
     gap: 4px;
   }
@@ -1087,7 +1091,7 @@ body {
 
 .tutorial__example {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 6px;
   margin-top: 16px;
   padding: 14px;
