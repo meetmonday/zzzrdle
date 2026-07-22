@@ -483,9 +483,14 @@
         }, revealDelay);
       }
     } else {
-      const allMatch = ATTRIBUTES.every(({ key }) => char[key] === target[key]);
-      if (allMatch) {
-        renderMessage('All attributes match! But this is a different agent...', 'hint');
+      const allMatchExceptFaction = ATTRIBUTES.filter(({ key }) => key !== 'faction')
+        .every(({ key }) => char[key] === target[key]);
+      if (allMatchExceptFaction) {
+        if (remaining === 1) {
+          renderMessage(`All attributes match! Agent faction: ${target.faction}`, 'hint');
+        } else {
+          renderMessage('All attributes match! But this is a different agent...', 'hint');
+        }
         shakeInput();
       }
       announce(`${char.name}: ${guesses.filter((g, i) => {
