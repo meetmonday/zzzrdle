@@ -492,9 +492,9 @@
             .every(({ key }) => c[key] === target[key])
         ).length + 1;
         if (collisionCandidates > remaining) {
-          renderMessage(`All attributes match! Agent faction: ${target.faction}`, 'hint');
+          renderMessage(`All attributes match except faction — it is: ${target.faction}`, 'hint');
         } else {
-          renderMessage('All attributes match! But this is a different agent...', 'hint');
+          renderMessage('All attributes match except faction — try a different one!', 'hint');
         }
         shakeInput();
       }
