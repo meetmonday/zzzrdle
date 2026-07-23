@@ -486,7 +486,16 @@
       const allMatchExceptFaction = ATTRIBUTES.filter(({ key }) => key !== 'faction')
         .every(({ key }) => char[key] === target[key]);
       if (allMatchExceptFaction) {
-        renderMessage(`All attributes match! Agent faction: ${target.faction}`, 'hint');
+        const collisionCandidates = characters.filter((c) =>
+          c.id !== target.id &&
+          ATTRIBUTES.filter(({ key }) => key !== 'faction')
+            .every(({ key }) => c[key] === target[key])
+        ).length + 1;
+        if (collisionCandidates > remaining) {
+          renderMessage(`All attributes match! Agent faction: ${target.faction}`, 'hint');
+        } else {
+          renderMessage('All attributes match! But this is a different agent...', 'hint');
+        }
         shakeInput();
       }
       announce(`${char.name}: ${guesses.filter((g, i) => {
