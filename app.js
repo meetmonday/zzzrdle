@@ -5,6 +5,23 @@
   const DATA_URL = 'data/characters.json?v=2';
   const STORAGE_KEY = 'zzzrdle-v1';
   const DAILY_ATTEMPTS = 5;
+  const TIME_START = 60;
+  const TIME_BONUS = 5;
+  const TIME_DANGER = 10;
+  const TIME_POINTS_BASE = 100;
+  const TIME_POINTS_EFF = 60;
+  const TIME_POINTS_EFF_STEP = 15;
+  const TIME_POINTS_SPEED = 50;
+  const TIME_POINTS_SPEED_STEP = 5;
+  const TIME_COMBO_MAX = 5;
+  const TIME_RANKS = [
+    { min: 2500, rank: 'SS', label: 'Legendary', cls: 'rank--ss' },
+    { min: 1800, rank: 'S', label: 'Ace', cls: 'rank--s' },
+    { min: 1200, rank: 'A', label: 'Elite', cls: 'rank--a' },
+    { min: 700, rank: 'B', label: 'Pro', cls: 'rank--b' },
+    { min: 300, rank: 'C', label: 'Rookie', cls: 'rank--c' },
+    { min: 0, rank: 'D', label: 'Beginner', cls: 'rank--d' },
+  ];
   const ATTRIBUTES = [
     { key: 'attribute', label: 'Attribute' },
     { key: 'specialty', label: 'Specialty' },
@@ -20,7 +37,15 @@
     board: document.getElementById('board'),
     message: document.getElementById('message'),
     attempts: document.getElementById('attempts-count'),
-    modeBtns: document.querySelectorAll('.mode-switch__btn'),
+    menuScreen: document.getElementById('menu-screen'),
+    gameScreen: document.getElementById('game-screen'),
+    menuBtn: document.getElementById('menu-btn'),
+    menuHelpBtn: document.getElementById('menu-help-btn'),
+    modeCards: document.querySelectorAll('.mode-card'),
+    statusDaily: document.getElementById('menu-status-daily'),
+    statusStreak: document.getElementById('menu-status-streak'),
+    statusPractice: document.getElementById('menu-status-practice'),
+    statusTime: document.getElementById('menu-status-time'),
     overlay: document.getElementById('overlay'),
     modalTitle: document.getElementById('modal-title'),
     modalResult: document.getElementById('modal-result'),
@@ -31,7 +56,21 @@
     practiceBtn: document.getElementById('practice-btn'),
     newPracticeBtn: document.getElementById('new-practice-btn'),
     newGameHint: document.getElementById('new-game-hint'),
+    restartBtn: document.getElementById('restart-btn'),
     streakBadge: document.getElementById('streak-badge'),
+    timeBadge: document.getElementById('time-badge'),
+    comboBadge: document.getElementById('combo-badge'),
+    attemptsLabel: document.getElementById('attempts-label'),
+    inputPanel: document.getElementById('input-panel'),
+    timeTimerWrap: document.getElementById('time-timer'),
+    timeTimerValue: document.getElementById('time-timer-value'),
+    timeBarFill: document.getElementById('time-bar-fill'),
+    timeStats: document.getElementById('time-stats'),
+    statScore: document.getElementById('stat-score'),
+    statBest: document.getElementById('stat-best'),
+    modalRank: document.getElementById('modal-rank'),
+    rankLetter: document.getElementById('rank-letter'),
+    rankLabel: document.getElementById('rank-label'),
     timerWrap: document.getElementById('daily-timer'),
     timerValue: document.getElementById('timer-value'),
     statPlayed: document.getElementById('stat-played'),
@@ -39,11 +78,15 @@
     statStreak: document.getElementById('stat-streak'),
     statMax: document.getElementById('stat-max'),
     helpBtn: document.getElementById('help-btn'),
+    statsHeading: document.querySelector('.modal__stats-heading'),
+    statsGrid: document.getElementById('stats'),
     tutorialOverlay: document.getElementById('tutorial-overlay'),
     tutorialClose: document.getElementById('tutorial-close'),
     tutorialStart: document.getElementById('tutorial-start'),
     announcer: document.getElementById('announcer'),
     toast: document.getElementById('toast'),
+    countdownOverlay: document.getElementById('countdown-overlay'),
+    countdownNumber: document.getElementById('countdown-number'),
   };
 
   let characters = [];
@@ -51,6 +94,7 @@
   let mode = 'daily';
   let suggestionMatches = [];
   let activeSuggestionIndex = -1;
+  let pendingTimeResult = false;
 
   // Keep controls disabled until data is loaded.
   els.input.disabled = true;
@@ -83,6 +127,14 @@
       els.toast.classList.remove('is-visible');
       setTimeout(() => { els.toast.hidden = true; }, 300);
     }, duration);
+  }
+
+  function showFloatText(text, cls = '') {
+    const el = document.createElement('div');
+    el.className = 'float-text' + (cls ? ' float-text--' + cls : '');
+    el.textContent = text;
+    els.inputPanel.appendChild(el);
+    setTimeout(() => el.remove(), 1500);
   }
 
   function findCharacter(query) {
@@ -130,6 +182,14 @@
       if (!saved) return defaultState();
       // Ensure newer fields exist for returning users.
       if (!saved.streak) saved.streak = defaultState().streak;
+      if (!saved.timeAttack) {
+        saved.timeAttack = defaultState().timeAttack;
+      } else {
+        const proto = defaultState().timeAttack;
+        for (const key of Object.keys(proto)) {
+          if (!(key in saved.timeAttack)) saved.timeAttack[key] = proto[key];
+        }
+      }
       return saved;
     } catch {
       return defaultState();
@@ -141,6 +201,7 @@
       stats: { played: 0, won: 0, streak: 0, maxStreak: 0 },
       daily: { date: todayString(), guesses: [], targetId: null, solved: false, lost: false },
       streak: { current: 0, max: 0, guesses: [], targetId: null, solved: false, lost: false },
+      timeAttack: { guesses: [], targetId: null, points: 0, solved: 0, best: 0, combo: 0, solvedIds: [], endsAt: null, roundStartedAt: null },
     };
   }
 
@@ -172,6 +233,13 @@
       }
       return characters.find((c) => c.id === state.streak.targetId) || getRandomTarget();
     }
+    if (mode === 'time') {
+      if (!state.timeAttack.targetId) {
+        state.timeAttack.targetId = getRandomTarget().id;
+        saveState();
+      }
+      return characters.find((c) => c.id === state.timeAttack.targetId) || getRandomTarget();
+    }
     if (!state.practiceTarget) {
       state.practiceTarget = getRandomTarget().id;
       saveState();
@@ -182,12 +250,17 @@
   function currentGuesses() {
     if (mode === 'daily') return state.daily.guesses;
     if (mode === 'streak') return state.streak.guesses;
+    if (mode === 'time') return state.timeAttack.guesses;
     return (state.practiceGuesses ||= []);
   }
 
   function currentMaxAttempts() {
-    if (mode === 'practice') return Infinity;
+    if (mode === 'practice' || mode === 'time') return Infinity;
     return DAILY_ATTEMPTS;
+  }
+
+  function isTimeActive() {
+    return !!state.timeAttack.endsAt && Date.now() < state.timeAttack.endsAt;
   }
 
   function isGameDone() {
@@ -196,6 +269,9 @@
     }
     if (mode === 'streak') {
       return state.streak.solved || state.streak.lost || state.streak.guesses.length >= DAILY_ATTEMPTS;
+    }
+    if (mode === 'time') {
+      return !isTimeActive();
     }
     return isPracticeSolved();
   }
@@ -271,7 +347,7 @@
     return tile;
   }
 
-  function renderGuessRow(guess, target, animate = false) {
+  function renderGuessRow(guess, target, animate = false, step = 300) {
     const row = document.createElement('article');
     row.className = 'guess-row';
 
@@ -308,8 +384,8 @@
             tile.classList.remove('tile--animating');
             tile.classList.add('tile--pop');
             setTimeout(() => tile.classList.remove('tile--pop'), 300);
-          }, 300);
-        }, i * 300);
+          }, step);
+        }, i * step);
       });
     } else {
       attributeTiles.forEach((tile) => {
@@ -346,6 +422,12 @@
   }
 
   function renderAttempts() {
+    if (mode === 'time') {
+      els.attempts.textContent = String(state.timeAttack.points);
+      els.attemptsLabel.textContent = 'pts';
+      return;
+    }
+    els.attemptsLabel.textContent = 'attempts';
     const guesses = currentGuesses();
     const max = currentMaxAttempts();
     els.attempts.textContent = `${guesses.length}/${max === Infinity ? '\u221e' : max}`;
@@ -356,10 +438,12 @@
     els.message.className = `message${type ? ' message--' + type : ''}`;
   }
 
+  let switchingRound = false;
+
   function updateInputState() {
     const done = isGameDone();
-    els.input.disabled = done;
-    els.guessBtn.disabled = done || !els.input.value.trim();
+    els.input.disabled = done || switchingRound;
+    els.guessBtn.disabled = done || switchingRound || !els.input.value.trim();
   }
 
   function isPracticeSolved() {
@@ -370,25 +454,105 @@
   }
 
   function renderMode() {
-    for (const btn of els.modeBtns) {
-      const active = btn.dataset.mode === mode;
-      btn.classList.toggle('is-active', active);
-      btn.setAttribute('aria-selected', String(active));
-    }
+    if (restartArmed) disarmRestart();
     els.timerWrap.hidden = mode !== 'daily';
+    els.timeTimerWrap.hidden = !(mode === 'time' && isTimeActive());
+    els.restartBtn.hidden = !(mode === 'time' && isTimeActive());
     els.practiceBtn.hidden = mode !== 'daily';
     const newGameAvailable = (mode === 'practice' || mode === 'streak') && isGameDone();
-    els.newPracticeBtn.hidden = !newGameAvailable;
-    els.newGameHint.hidden = !newGameAvailable;
+    const timeIdle = mode === 'time' && !isTimeActive() && !countdownActive;
+    els.newPracticeBtn.hidden = !newGameAvailable && !timeIdle;
+    els.newPracticeBtn.textContent = mode === 'time' ? 'Start' : 'New game';
+    els.newGameHint.hidden = !newGameAvailable && !timeIdle;
     els.streakBadge.hidden = mode !== 'streak';
     if (mode === 'streak') {
       els.streakBadge.textContent = `Streak ${state.streak.current}`;
     }
+    els.timeBadge.hidden = mode !== 'time';
+    if (mode === 'time') {
+      els.timeBadge.textContent = `Best ${state.timeAttack.best}`;
+    }
+    const comboShown = mode === 'time' && state.timeAttack.combo > 1;
+    els.comboBadge.hidden = !comboShown;
+    if (comboShown) {
+      els.comboBadge.textContent = `×${state.timeAttack.combo} COMBO`;
+    }
+    renderMenuStatuses();
+  }
+
+  // --- Screens and menu ------------------------------------------------------
+
+  function isGameVisible() {
+    return !els.gameScreen.hidden;
+  }
+
+  function showScreen(which) {
+    const menu = which === 'menu';
+    els.menuScreen.hidden = !menu;
+    els.gameScreen.hidden = menu;
+  }
+
+  function renderMenuStatuses() {
+    const d = state.daily;
+    let dailyStatus;
+    if (d.solved) {
+      dailyStatus = `Solved · ${d.guesses.length}/${DAILY_ATTEMPTS}`;
+    } else if (d.lost || d.guesses.length >= DAILY_ATTEMPTS) {
+      dailyStatus = 'Come back tomorrow';
+    } else if (d.guesses.length > 0) {
+      const left = DAILY_ATTEMPTS - d.guesses.length;
+      dailyStatus = `${left} ${left === 1 ? 'try' : 'tries'} left`;
+    } else {
+      dailyStatus = 'Ready to play';
+    }
+    els.statusDaily.textContent = dailyStatus;
+
+    const s = state.streak;
+    els.statusStreak.textContent = s.current > 0
+      ? `Current streak · ${s.current}`
+      : s.lost
+        ? 'Streak broken — start again'
+        : 'Build your win streak';
+
+    els.statusPractice.textContent = 'Ready to play';
+
+    els.statusTime.textContent = state.timeAttack.best > 0
+      ? `Best · ${state.timeAttack.best} pts`
+      : 'No record yet';
+  }
+
+  function openMenu() {
+    if (restartArmed) disarmRestart();
+    cancelCountdown();
+    renderMenuStatuses();
+    showScreen('menu');
+  }
+
+  function launchMode(newMode) {
+    if (newMode !== 'time') pendingTimeResult = false;
+    setMode(newMode);
+    showScreen('game');
+    if (newMode === 'time') {
+      if (pendingTimeResult) {
+        pendingTimeResult = false;
+        renderMode();
+        initGame();
+        showGameOver(state.timeAttack.solved > 0);
+        return;
+      }
+      if (!isTimeActive() && !countdownActive) {
+        startAttackGame();
+        return;
+      }
+    }
+    if (!isGameDone()) els.input.focus();
   }
 
   // --- Game actions --------------------------------------------------------
 
   function handleGuess() {
+    if (switchingRound) return;
+
     const query = els.input.value;
     const char = findCharacter(query);
 
@@ -411,7 +575,8 @@
     guesses.push(char);
     saveState();
 
-    const row = renderGuessRow(char, target, true);
+    const step = mode === 'time' ? 200 : 300;
+    const row = renderGuessRow(char, target, true, step);
     els.board.appendChild(row);
 
     els.input.value = '';
@@ -436,15 +601,18 @@
         state.streak.current += 1;
         state.streak.max = Math.max(state.streak.max, state.streak.current);
       }
+      if (mode === 'time') {
+        advanceTimeRound(target);
+      }
       saveState();
       announce(`Agent found in ${guesses.length} ${guesses.length === 1 ? 'try' : 'tries'}!`);
-      const revealDelay = 400 * ATTRIBUTES.length + 300;
+      const revealDelay = step * ATTRIBUTES.length + 300;
       if (mode === 'daily') {
         setTimeout(() => {
           spawnConfetti();
           showGameOver(true);
         }, revealDelay);
-      } else {
+      } else if (mode !== 'time') {
         setTimeout(() => {
           spawnConfetti();
           const streakText = mode === 'streak' ? ` · Streak: ${state.streak.current}` : '';
@@ -468,7 +636,7 @@
       }
       saveState();
       announce('Out of attempts. Game over.');
-      const revealDelay = 400 * ATTRIBUTES.length + 300;
+      const revealDelay = step * ATTRIBUTES.length + 300;
       if (mode === 'daily') {
         setTimeout(() => showGameOver(false), revealDelay);
       } else {
@@ -483,6 +651,11 @@
         }, revealDelay);
       }
     } else {
+      if (mode === 'time' && state.timeAttack.combo > 0) {
+        state.timeAttack.combo = 0;
+        saveState();
+        renderMode();
+      }
       const allMatchExceptFaction = ATTRIBUTES.filter(({ key }) => key !== 'faction')
         .every(({ key }) => char[key] === target[key]);
       if (allMatchExceptFaction) {
@@ -578,7 +751,16 @@
     const guesses = currentGuesses();
     const guessCount = guesses.length;
 
-    if (won) {
+    els.modalRank.hidden = mode !== 'time';
+    if (mode === 'time') {
+      const { points, solved } = state.timeAttack;
+      const rank = TIME_RANKS.find((r) => points >= r.min);
+      els.modalTitle.textContent = "Time's up!";
+      els.modalResult.textContent = `${points} pts · ${solved} ${solved === 1 ? 'agent' : 'agents'} solved`;
+      els.rankLetter.textContent = rank.rank;
+      els.rankLetter.className = `rank-badge ${rank.cls}`;
+      els.rankLabel.textContent = rank.label;
+    } else if (won) {
       els.modalTitle.textContent = 'Agent found!';
       if (mode === 'daily') {
         els.modalResult.textContent = `Solved in ${guessCount}/${DAILY_ATTEMPTS}`;
@@ -606,6 +788,15 @@
       </div>
     `;
 
+    const isTime = mode === 'time';
+    els.statsHeading.textContent = isTime ? 'This run' : 'Your stats';
+    els.statsGrid.hidden = isTime;
+    els.timeStats.hidden = !isTime;
+    if (isTime) {
+      els.statScore.textContent = state.timeAttack.solved;
+      els.statBest.textContent = state.timeAttack.best;
+    }
+
     els.statPlayed.textContent = state.stats.played;
     els.statWon.textContent = state.stats.won;
     els.statStreak.textContent = state.stats.streak;
@@ -632,7 +823,7 @@
     els.overlay.classList.remove('is-visible');
     setTimeout(() => {
       els.overlay.hidden = true;
-      els.input.focus();
+      if (isGameVisible()) els.input.focus();
     }, 200);
   }
 
@@ -647,19 +838,25 @@
       header = `ZZZrdle Daily ${today} ${won ? guesses.length + '/' + DAILY_ATTEMPTS : 'X/' + DAILY_ATTEMPTS}`;
     } else if (mode === 'streak') {
       header = `ZZZrdle Streak ${won ? guesses.length + '/' + DAILY_ATTEMPTS : 'X/' + DAILY_ATTEMPTS} · current streak: ${state.streak.current}`;
+    } else if (mode === 'time') {
+      const { points, solved, best } = state.timeAttack;
+      const rank = TIME_RANKS.find((r) => points >= r.min);
+      header = `ZZZrdle Time Attack — ${solved} agents · ${points} pts (${rank.rank}) · best: ${best}`;
     } else {
       header = `ZZZrdle Practice ${won ? '— solved in ' + guesses.length : ''}`;
     }
 
-    const grid = guesses
-      .map((g) =>
-        ATTRIBUTES
-          .map(({ key }) => (g[key] === target[key] ? '🟩' : '⬛'))
-          .join('')
-      )
-      .join('\n');
+    const grid = mode === 'time'
+      ? ''
+      : guesses
+          .map((g) =>
+            ATTRIBUTES
+              .map(({ key }) => (g[key] === target[key] ? '🟩' : '⬛'))
+              .join('')
+          )
+          .join('\n');
 
-    const text = `${header}\n${grid}\n${window.location.href}`;
+    const text = `${header}\n${grid ? grid + '\n' : ''}${window.location.href}`;
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(() => {
@@ -703,13 +900,231 @@
     setInterval(update, 1000);
   }
 
+  // --- Time attack ----------------------------------------------------------
+
+  let timeTickInterval = null;
+
+  function formatCountdown(totalSeconds) {
+    const s = Math.max(0, Math.ceil(totalSeconds));
+    const mm = Math.floor(s / 60);
+    const ss = String(s % 60).padStart(2, '0');
+    return `${mm}:${ss}`;
+  }
+
+  function startTimeTicker() {
+    stopTimeTicker();
+    timeTickInterval = setInterval(updateTimeTimer, 250);
+    updateTimeTimer();
+  }
+
+  function stopTimeTicker() {
+    if (timeTickInterval) {
+      clearInterval(timeTickInterval);
+      timeTickInterval = null;
+    }
+  }
+
+  function updateTimeTimer() {
+    if (!state.timeAttack.endsAt) {
+      els.timeTimerWrap.classList.remove('timer--danger');
+      stopTimeTicker();
+      return;
+    }
+    const remaining = (state.timeAttack.endsAt - Date.now()) / 1000;
+    els.timeTimerValue.textContent = formatCountdown(remaining);
+    const pct = Math.max(0, Math.min(100, (remaining / TIME_START) * 100));
+    els.timeBarFill.style.width = pct + '%';
+    els.timeBarFill.classList.toggle('time-bar__fill--warn', remaining <= TIME_START / 2 && remaining > TIME_DANGER);
+    els.timeBarFill.classList.toggle('time-bar__fill--danger', remaining <= TIME_DANGER);
+    els.timeTimerWrap.classList.toggle('timer--danger', remaining <= TIME_DANGER);
+    if (remaining <= 0) {
+      finishTimeRun();
+    }
+  }
+
+  function pickTimeTarget() {
+    const solved = state.timeAttack.solvedIds || [];
+    const pool = characters.filter((c) => !solved.includes(c.id));
+    if (!pool.length) {
+      state.timeAttack.solvedIds = [];
+      return getRandomTarget();
+    }
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  let newBestCelebrated = false;
+  let countdownActive = false;
+  let countdownToken = 0;
+  let restartArmed = false;
+  let restartArmTimer = null;
+
+  function disarmRestart() {
+    restartArmed = false;
+    clearTimeout(restartArmTimer);
+    els.restartBtn.textContent = 'Restart';
+    els.restartBtn.classList.remove('is-confirm');
+  }
+
+  function requestRestart() {
+    if (mode !== 'time' || !isTimeActive()) return;
+    if (!restartArmed) {
+      restartArmed = true;
+      els.restartBtn.textContent = 'Sure?';
+      els.restartBtn.classList.add('is-confirm');
+      restartArmTimer = setTimeout(disarmRestart, 2500);
+      announce('Press restart again to confirm');
+      return;
+    }
+    disarmRestart();
+    startAttackGame();
+  }
+
+  function showCountdownNumber(text) {
+    els.countdownNumber.textContent = text;
+    els.countdownNumber.classList.remove('is-tick');
+    void els.countdownNumber.offsetWidth;
+    els.countdownNumber.classList.add('is-tick');
+  }
+
+  function cancelCountdown() {
+    countdownToken += 1;
+    countdownActive = false;
+    els.countdownOverlay.hidden = true;
+  }
+
+  function beginCountdown() {
+    cancelCountdown();
+    const token = countdownToken;
+    countdownActive = true;
+    renderMode();
+    updateInputState();
+    els.countdownOverlay.hidden = false;
+    const steps = ['3', '2', '1'];
+    steps.forEach((n, i) => {
+      setTimeout(() => {
+        if (token !== countdownToken) return;
+        showCountdownNumber(n);
+        announce(n);
+      }, i * 650);
+    });
+    setTimeout(() => {
+      if (token !== countdownToken) return;
+      countdownActive = false;
+      els.countdownOverlay.hidden = true;
+      state.timeAttack.endsAt = Date.now() + TIME_START * 1000;
+      state.timeAttack.roundStartedAt = Date.now();
+      saveState();
+      startTimeTicker();
+      renderMode();
+      updateInputState();
+      els.input.focus();
+    }, steps.length * 650);
+  }
+
+  function startAttackGame() {
+    cancelCountdown();
+    stopTimeTicker();
+    hideSuggestions();
+    els.input.value = '';
+    switchingRound = false;
+    newBestCelebrated = false;
+    state.timeAttack.guesses = [];
+    state.timeAttack.solvedIds = [];
+    state.timeAttack.points = 0;
+    state.timeAttack.solved = 0;
+    state.timeAttack.combo = 0;
+    state.timeAttack.roundStartedAt = null;
+    state.timeAttack.endsAt = null;
+    state.timeAttack.targetId = pickTimeTarget().id;
+    saveState();
+    mode = 'time';
+    renderMode();
+    initGame();
+    beginCountdown();
+  }
+
+  function advanceTimeRound(target) {
+    const guessesUsed = state.timeAttack.guesses.length;
+    const elapsed = Math.max(0, (Date.now() - state.timeAttack.roundStartedAt) / 1000);
+    const effBonus = Math.max(0, TIME_POINTS_EFF - (guessesUsed - 1) * TIME_POINTS_EFF_STEP);
+    const speedBonus = Math.max(0, TIME_POINTS_SPEED - Math.floor(elapsed * TIME_POINTS_SPEED_STEP));
+    state.timeAttack.combo = Math.min(state.timeAttack.combo + 1, TIME_COMBO_MAX);
+    const gained = (TIME_POINTS_BASE + effBonus + speedBonus) * state.timeAttack.combo;
+    const prevBest = state.timeAttack.best;
+    state.timeAttack.points += gained;
+    state.timeAttack.solved += 1;
+    state.timeAttack.best = Math.max(prevBest, state.timeAttack.points);
+    state.timeAttack.solvedIds.push(target.id);
+    state.timeAttack.endsAt += TIME_BONUS * 1000;
+    saveState();
+
+    switchingRound = true;
+    updateInputState();
+    renderAttempts();
+    renderMode();
+
+    const comboText = state.timeAttack.combo > 1 ? ` · COMBO ×${state.timeAttack.combo}` : '';
+    const bestText = prevBest > 0 && state.timeAttack.points > prevBest && !newBestCelebrated ? ' · NEW BEST!' : '';
+    if (bestText) {
+      newBestCelebrated = true;
+      spawnConfetti();
+    }
+    showFloatText(`+${gained} · +${TIME_BONUS}s${comboText}${bestText}`);
+    showToast(`
+      <img class="toast__icon" src="${escapeAttr(target.image)}" alt="">
+      <div class="toast__text">
+        <span class="toast__title">Agent found!</span>
+        <span class="toast__subtitle">+${gained} pts${comboText}</span>
+      </div>
+    `, 'win', 1600);
+
+    setTimeout(() => {
+      switchingRound = false;
+      if (!isTimeActive()) return;
+      state.timeAttack.guesses = [];
+      state.timeAttack.targetId = pickTimeTarget().id;
+      state.timeAttack.roundStartedAt = Date.now();
+      saveState();
+      initGame();
+      renderMode();
+      els.input.focus();
+    }, 200 * ATTRIBUTES.length + 300);
+  }
+
+  function finishTimeRun() {
+    stopTimeTicker();
+    state.timeAttack.endsAt = null;
+    saveState();
+    els.timeTimerWrap.classList.remove('timer--danger');
+    if (mode !== 'time') return;
+    if (!isGameVisible()) {
+      pendingTimeResult = true;
+      return;
+    }
+    switchingRound = false;
+    updateInputState();
+    renderMode();
+    if (state.timeAttack.solved > 0) spawnConfetti();
+    showGameOver(state.timeAttack.solved > 0);
+  }
+
   // --- Mode switching ------------------------------------------------------
 
   function setMode(newMode) {
     if (newMode === mode) return;
+    cancelCountdown();
     mode = newMode;
     renderMode();
     initGame();
+    if (mode === 'time' && state.timeAttack.endsAt) {
+      if (isTimeActive()) {
+        startTimeTicker();
+      } else {
+        finishTimeRun();
+      }
+    } else if (mode !== 'time') {
+      stopTimeTicker();
+    }
     if (!isGameDone()) els.input.focus();
   }
 
@@ -767,7 +1182,7 @@
     setTimeout(() => {
       els.tutorialOverlay.hidden = true;
       localStorage.setItem(TUTORIAL_KEY, '1');
-      els.input.focus();
+      if (isGameVisible()) els.input.focus();
     }, 200);
   }
 
@@ -833,9 +1248,12 @@
       }
     });
 
-    for (const btn of els.modeBtns) {
-      btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    for (const card of els.modeCards) {
+      card.addEventListener('click', () => launchMode(card.dataset.mode));
     }
+
+    els.menuBtn.addEventListener('click', openMenu);
+    els.menuHelpBtn.addEventListener('click', showTutorial);
 
     els.modalClose.addEventListener('click', closeOverlay);
     els.overlay.addEventListener('click', (e) => {
@@ -844,6 +1262,9 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        if (restartArmed) {
+          disarmRestart();
+        }
         if (!els.tutorialOverlay.hidden) {
           closeTutorial();
         } else if (!els.overlay.hidden) {
@@ -852,12 +1273,21 @@
           hideSuggestions();
         }
       }
-      if (e.key === 'Enter' && e.shiftKey && isGameDone() && els.overlay.hidden && els.tutorialOverlay.hidden) {
-        e.preventDefault();
-        if (mode === 'streak') {
-          startStreakGame();
-        } else if (mode === 'practice') {
-          startPracticeGame();
+      if (e.key === 'Enter' && e.shiftKey && els.overlay.hidden && els.tutorialOverlay.hidden) {
+        if (mode === 'time' && isTimeActive()) {
+          e.preventDefault();
+          requestRestart();
+          return;
+        }
+        if (isGameDone()) {
+          e.preventDefault();
+          if (mode === 'streak') {
+            startStreakGame();
+          } else if (mode === 'practice') {
+            startPracticeGame();
+          } else if (mode === 'time') {
+            if (!countdownActive) startAttackGame();
+          }
         }
       }
     });
@@ -869,16 +1299,21 @@
     els.newPracticeBtn.addEventListener('click', () => {
       if (mode === 'streak') {
         startStreakGame();
+      } else if (mode === 'time') {
+        startAttackGame();
       } else {
         startPracticeGame();
       }
     });
+    els.restartBtn.addEventListener('click', requestRestart);
     els.practiceBtn.addEventListener('click', () => {
       closeOverlay();
       if (mode === 'daily') {
         setMode('practice');
       } else if (mode === 'streak') {
         startStreakGame();
+      } else if (mode === 'time') {
+        startAttackGame();
       } else {
         startPracticeGame();
       }
@@ -892,20 +1327,20 @@
     });
 
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible' && !isGameDone()) {
+      if (document.visibilityState === 'visible' && isGameVisible() && !isGameDone()) {
         els.input.focus();
       }
     });
 
     window.addEventListener('focus', () => {
-      if (!isGameDone()) {
+      if (isGameVisible() && !isGameDone()) {
         els.input.focus();
       }
     });
 
     document.addEventListener('click', (e) => {
-      if (!isGameDone() && !els.overlay.classList.contains('is-visible') && !els.tutorialOverlay.classList.contains('is-visible')) {
-        const ignore = e.target.closest('button, a, .suggestions, .mode-switch, .help-btn');
+      if (isGameVisible() && !isGameDone() && !els.overlay.classList.contains('is-visible') && !els.tutorialOverlay.classList.contains('is-visible')) {
+        const ignore = e.target.closest('button, a, .suggestions, .mode-card, .help-btn');
         if (!ignore) {
           els.input.focus();
         }
@@ -930,6 +1365,8 @@
     }
 
     resetDailyIfNeeded();
+    showScreen('menu');
+    renderMenuStatuses();
     renderMode();
     initGame();
     startTimer();
