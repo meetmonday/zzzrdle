@@ -29,6 +29,21 @@ Green tile = correct match, grey = wrong.
 
 - Vanilla HTML/CSS/JS — no frameworks, no build step
 - Character data from [Zenless Zone Zero API](https://static.nanoka.cc/zzz/)
+- Icons synced from [tgdm/zzzip](https://github.com/tgdm/zzzip) image pack (`data/fetch-icons.mjs`)
+
+## Assets & legal
+
+This is an unofficial fan-made project. It is not affiliated with, associated with,
+or endorsed by HoYoverse (miHoYo).
+
+All Zenless Zone Zero names, characters, icons and other game assets are trademarks
+and copyrights of HoYoverse. Game graphics used here remain the property of their
+respective owners and are included for non-commercial, informational purposes as
+fair fan use. The upstream image pack ([tgdm/zzzip](https://github.com/tgdm/zzzip))
+is distributed without a license; no ownership of these assets is claimed or
+transferred by this project.
+
+The MIT license below applies to this project's source code only.
 
 ## License
 

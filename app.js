@@ -2,7 +2,7 @@
   'use strict';
 
   // Bump the version when data/characters.json changes so returning users get the fresh data.
-  const DATA_URL = 'data/characters.json?v=2';
+  const DATA_URL = 'data/characters.json?v=3';
   const STORAGE_KEY = 'zzzrdle-v1';
   const DAILY_ATTEMPTS = 5;
   const TIME_START = 60;
