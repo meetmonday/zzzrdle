@@ -15,12 +15,11 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,900;1,700;1,900&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-noise" aria-hidden="true"></div>
 
   <section class="menu-screen" id="menu-screen" aria-label="Main menu">
     <div class="menu-head">
@@ -33,91 +32,103 @@
 
     <nav class="menu-modes" aria-label="Game modes">
       <button class="mode-card" data-mode="daily" type="button">
+        <span class="mode-card__body">
         <span class="mode-card__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </span>
-        <span class="mode-card__body">
+        <span class="mode-card__info">
           <span class="mode-card__title">Daily</span>
           <span class="mode-card__desc">One agent per day for everyone</span>
           <span class="mode-card__status" id="menu-status-daily"></span>
         </span>
         <svg class="mode-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
       </button>
 
       <button class="mode-card" data-mode="streak" type="button">
+        <span class="mode-card__body">
         <span class="mode-card__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
         </span>
-        <span class="mode-card__body">
+        <span class="mode-card__info">
           <span class="mode-card__title">Streak</span>
           <span class="mode-card__desc">Chain wins — one loss breaks it</span>
           <span class="mode-card__status" id="menu-status-streak"></span>
         </span>
         <svg class="mode-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
       </button>
 
       <button class="mode-card" data-mode="practice" type="button">
+        <span class="mode-card__body">
         <span class="mode-card__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
         </span>
-        <span class="mode-card__body">
+        <span class="mode-card__info">
           <span class="mode-card__title">Practice</span>
           <span class="mode-card__desc">Unlimited rounds, no pressure</span>
           <span class="mode-card__status" id="menu-status-practice"></span>
         </span>
         <svg class="mode-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
       </button>
 
       <button class="mode-card" data-mode="time" type="button">
+        <span class="mode-card__body">
         <span class="mode-card__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </span>
-        <span class="mode-card__body">
+        <span class="mode-card__info">
           <span class="mode-card__title">Time attack</span>
           <span class="mode-card__desc">60 seconds, chase the high score</span>
           <span class="mode-card__status" id="menu-status-time"></span>
         </span>
         <svg class="mode-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
       </button>
     </nav>
 
     <button id="menu-help-btn" class="menu-help" type="button">How to play</button>
+
+    <div class='menu-legal'>
+		This is an unofficial fan-made project. It is not affiliated with, associated with,
+		or endorsed by HoYoverse (miHoYo).
+		
+		All Zenless Zone Zero names, characters, icons and other game assets are trademarks
+		and copyrights of HoYoverse. Game graphics used here remain the property of their
+		respective owners and are included for non-commercial, informational purposes as
+		fair fan use.
+    </div>
   </section>
 
   <main class="game" id="game-screen" hidden>
     <header class="game__header">
       <button id="menu-btn" class="menu-btn" type="button">
         <svg class="menu-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        <span>Menu</span>
+        <span>Back</span>
       </button>
-
-      <div class="logo">
-        <img src="logo.svg" alt="" class="logo__icon" width="48" height="52">
-        <h1 class="logo__text">rdle</h1>
-      </div>
-
-      <button id="help-btn" class="help-btn" type="button" aria-label="How to play">?</button>
+      <div class="new-game-area">
+            <div id="daily-timer" class="timer timer--header" hidden>
+              <span class="timer__label">Next agent in</span>
+              <span id="timer-value" class="timer__value">--:--:--</span>
+            </div>
+            <div id="time-timer" class="timer timer--header" hidden>
+              <div class="time-bar"><div id="time-bar-fill" class="time-bar__fill"></div></div>
+              <span id="time-timer-value" class="timer__value">1:00</span>
+            </div>
+            <span id="new-game-hint" class="new-game-hint" hidden>Shift + Enter</span>
+            <button id="restart-btn" class="new-game-btn new-game-btn--danger" type="button" hidden>Restart</button>
+            <button id="new-practice-btn" class="new-game-btn" type="button" hidden>New game</button>
+          </div>
     </header>
 
     <section class="board" id="board" aria-label="Guesses"></section>
 
-    <div class="new-game-area">
-      <div id="daily-timer" class="timer timer--header" hidden>
-        <span class="timer__label">Next agent in</span>
-        <span id="timer-value" class="timer__value">--:--:--</span>
-      </div>
-      <div id="time-timer" class="timer timer--header" hidden>
-        <span class="timer__label">Left</span>
-        <div class="time-bar"><div id="time-bar-fill" class="time-bar__fill"></div></div>
-        <span id="time-timer-value" class="timer__value">1:00</span>
-      </div>
-      <button id="restart-btn" class="new-game-btn new-game-btn--danger" type="button" hidden>Restart</button>
-      <button id="new-practice-btn" class="new-game-btn" type="button" hidden>New game</button>
-      <span id="new-game-hint" class="new-game-hint" hidden>Shift + Enter</span>
-    </div>
+    
 
     <section class="input-panel" id="input-panel">
       <div class="input-card">
+        <div class="input-card__inner">
         <div class="input-card__header">
           <div class="attempts">
             <span id="attempts-count" class="attempts__count">0/5</span>
@@ -140,6 +151,7 @@
           <div id="suggestions" class="suggestions" hidden></div>
         </div>
         <p id="message" class="message" aria-live="polite"></p>
+        </div>
       </div>
     </section>
   </main>
@@ -147,6 +159,7 @@
   <div id="overlay" class="overlay" hidden>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <button id="modal-close" class="modal__close" aria-label="Close">×</button>
+      <div class="modal__inner">
       <h2 id="modal-title" class="modal__title">Result</h2>
       <p id="modal-result" class="modal__result"></p>
 
@@ -191,14 +204,16 @@
       <button id="share-btn" class="share-btn" type="button">Share result</button>
       <button id="practice-btn" class="share-btn share-btn--secondary" type="button" hidden>Play practice</button>
       <p id="share-status" class="share-status" aria-live="polite"></p>
+      </div>
     </div>
   </div>
 
   <div id="tutorial-overlay" class="overlay" hidden>
     <div class="modal tutorial" role="dialog" aria-modal="true" aria-labelledby="tutorial-title">
       <button id="tutorial-close" class="modal__close" aria-label="Close">×</button>
+      <div class="modal__inner">
       <h2 id="tutorial-title" class="modal__title">How to play</h2>
-      <p class="modal__result">Guess the ZZZ agent in 5 tries</p>
+      <p class="modal__result">Guess the ZZZ agent</p>
 
       <ol class="tutorial__steps">
         <li class="tutorial__step">
@@ -227,9 +242,8 @@
         <div class="tutorial__tile tutorial__tile--correct">Rarity</div>
       </div>
 
-      <p class="tutorial__hint">Daily mode: 1 puzzle per day · Streak: keep winning · Practice: unlimited · Time: beat the clock</p>
-
       <button id="tutorial-start" class="share-btn" type="button">Got it!</button>
+      </div>
     </div>
   </div>
 

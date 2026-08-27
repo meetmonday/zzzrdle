@@ -687,7 +687,7 @@
   }
 
   function spawnConfetti() {
-    const colors = ['#ffcf2e', '#00d084', '#ff4d6d', '#4ecdc4', '#a78bfa', '#f472b6'];
+    const colors = ['#d9fa00', '#a8c200', '#ffb500', '#ea00ff', '#00a8ff', '#f04444'];
     const container = document.body;
     for (let i = 0; i < 50; i++) {
       const piece = document.createElement('div');
@@ -1319,7 +1319,7 @@
       }
     });
 
-    els.helpBtn.addEventListener('click', showTutorial);
+    // els.helpBtn.addEventListener('click', showTutorial);
     els.tutorialClose.addEventListener('click', closeTutorial);
     els.tutorialStart.addEventListener('click', closeTutorial);
     els.tutorialOverlay.addEventListener('click', (e) => {
