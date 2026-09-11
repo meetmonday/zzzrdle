@@ -2,7 +2,8 @@
   'use strict';
 
   // Bump the version when data/characters.json changes so returning users get the fresh data.
-  const DATA_URL = 'data/characters.json?v=3';
+  const DATA_URL = 'data/characters.json?v=6';
+  const IMG_BASE = 'https://enka.network/ui/zzz/';
   const STORAGE_KEY = 'zzzrdle-v1';
   const DAILY_ATTEMPTS = 5;
   const TIME_START = 60;
@@ -104,6 +105,18 @@
 
   function normalizeName(name) {
     return (name || '').toLowerCase().trim();
+  }
+
+  // Fill in derived fields stripped from the data file to save bandwidth.
+  function expandCharacter(c, factions) {
+    if (!c) return c;
+    c.image = IMG_BASE + c.image;
+    c.attributeIcon = `/attribute/${c.attribute}.png`;
+    c.specialtyIcon = `/specialty/${c.specialty}.png`;
+    c.attackTypeIcon = `/attackType/${c.attackType}.png`;
+    c.factionIcon = `/factions/${(factions && factions[c.faction]) || c.faction.replace('.', '').replace(/ /g, '_')}.png`;
+    c.rarityIcon = `/rarity/${c.rarity}.png`;
+    return c;
   }
 
   function announce(text) {
@@ -1365,7 +1378,8 @@
     try {
       const res = await fetch(DATA_URL);
       if (!res.ok) throw new Error(res.statusText);
-      characters = await res.json();
+      const data = await res.json();
+      characters = (data.chars || []).map((c) => expandCharacter(c, data.factions));
     } catch (err) {
       renderMessage('Failed to load character data.', 'error');
       console.error(err);
