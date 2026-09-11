@@ -252,6 +252,14 @@ body {
   font-size: 0.7rem;
   text-align: center;
 }
+.menu-roster {
+  margin: 8px 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
 .mode-card {
   appearance: none;
   cursor: pointer;

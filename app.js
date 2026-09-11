@@ -2,7 +2,7 @@
   'use strict';
 
   // Bump the version when data/characters.json changes so returning users get the fresh data.
-  const DATA_URL = 'data/characters.json?v=6';
+  const DATA_URL = 'data/characters.json?v=7';
   const IMG_BASE = 'https://enka.network/ui/zzz/';
   const STORAGE_KEY = 'zzzrdle-v1';
   const DAILY_ATTEMPTS = 5;
@@ -79,6 +79,7 @@
     statStreak: document.getElementById('stat-streak'),
     statMax: document.getElementById('stat-max'),
     helpBtn: document.getElementById('help-btn'),
+    menuRoster: document.getElementById('menu-roster'),
     statsHeading: document.querySelector('.modal__stats-heading'),
     statsGrid: document.getElementById('stats'),
     tutorialOverlay: document.getElementById('tutorial-overlay'),
@@ -511,6 +512,16 @@
     const menu = which === 'menu';
     els.menuScreen.hidden = !menu;
     els.gameScreen.hidden = menu;
+  }
+
+  function renderRoster(meta) {
+    if (!els.menuRoster || !meta) return;
+    const date = new Date(meta.updated + 'T00:00:00');
+    const stamp = isNaN(date) || !meta.updated
+      ? ''
+      : ' · updated ' + date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    els.menuRoster.textContent = `Roster: ${meta.agents} agents · ZZZ v${meta.version}${stamp}`;
+    els.menuRoster.hidden = false;
   }
 
   function renderMenuStatuses() {
@@ -1380,6 +1391,7 @@
       if (!res.ok) throw new Error(res.statusText);
       const data = await res.json();
       characters = (data.chars || []).map((c) => expandCharacter(c, data.factions));
+      renderRoster(data.meta);
     } catch (err) {
       renderMessage('Failed to load character data.', 'error');
       console.error(err);
