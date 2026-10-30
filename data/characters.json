@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "3.2.12",
-    "agents": 60,
-    "updated": "2026-09-12"
+    "version": "3.3",
+    "agents": 62,
+    "updated": "2026-10-30"
   },
   "factions": {
     "Cunning Hares": "Cunning_Hares",
@@ -218,7 +218,7 @@
       "name": "Harumasa",
       "attribute": "Electric",
       "specialty": "Attack",
-      "attackType": "Pierce",
+      "attackType": "Slash",
       "faction": "Hollow Special Operations Section 6",
       "rarity": "S",
       "image": "IconRoleSelect35.png"
@@ -308,7 +308,7 @@
       "name": "Orphie & Magus",
       "attribute": "Fire",
       "specialty": "Attack",
-      "attackType": "Pierce",
+      "attackType": "Slash",
       "faction": "New Eridu Defense Force",
       "rarity": "S",
       "image": "IconRoleSelect49.png"
@@ -622,6 +622,26 @@
       "faction": "Roscaelifer",
       "rarity": "S",
       "image": "IconRoleSelect68.png"
+    },
+    {
+      "id": 1631,
+      "name": "Severian",
+      "attribute": "Wind",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "New Eridu Public Security",
+      "rarity": "S",
+      "image": "IconRoleSelect1631.png"
+    },
+    {
+      "id": 1641,
+      "name": "Phoenix",
+      "attribute": "Fire",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Krampus Compliance Authority",
+      "rarity": "S",
+      "image": "IconRoleSelect1641.png"
     }
   ]
 }

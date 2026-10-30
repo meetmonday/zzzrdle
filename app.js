@@ -2,7 +2,7 @@
   'use strict';
 
   // Bump the version when data/characters.json changes so returning users get the fresh data.
-  const DATA_URL = 'data/characters.json?v=7';
+  const DATA_URL = 'data/characters.json?v=8';
   const IMG_BASE = 'https://enka.network/ui/zzz/';
   const STORAGE_KEY = 'zzzrdle-v1';
   const DAILY_ATTEMPTS = 5;
