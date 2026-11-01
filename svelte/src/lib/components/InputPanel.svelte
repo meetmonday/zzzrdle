@@ -1,5 +1,6 @@
 <script>
   import { game } from '../game/index.svelte.js'
+  import FloatText from './FloatText.svelte'
   import { escapeHtml } from '../utils/escape.js'
 
   let inputValue = $state('')
@@ -140,4 +141,5 @@
       </p>
     </div>
   </div>
+  <FloatText />
 </section>

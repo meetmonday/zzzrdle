@@ -1,10 +1,13 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
+  import { TIME_START, TIME_DANGER } from '../game/constants.js'
   import { game } from '../game/index.svelte.js'
   import Board from './Board.svelte'
   import InputPanel from './InputPanel.svelte'
 
   let { onMenu } = $props()
+  let timeWarn = $derived(game.timeRemaining <= TIME_START / 2 && game.timeRemaining > TIME_DANGER)
+  let timeDanger = $derived(game.timeRemaining <= TIME_DANGER)
 
   onMount(() => {
     if (game.mode === 'daily') game.startDailyTimer()
@@ -61,8 +64,8 @@
         </div>
       {/if}
       {#if game.mode === 'time' && game.state.timeAttack.endsAt}
-        <div id="time-timer" class="timer timer--header">
-          <div class="time-bar"><div id="time-bar-fill" class="time-bar__fill" style:width={timeProgress() + '%'}></div></div>
+        <div id="time-timer" class="timer timer--header {timeDanger ? 'timer--danger' : ''}">
+          <div class="time-bar"><div id="time-bar-fill" class="time-bar__fill {timeWarn ? 'time-bar__fill--warn' : ''} {timeDanger ? 'time-bar__fill--danger' : ''}" style:width={timeProgress() + '%'}></div></div>
           <span id="time-timer-value" class="timer__value">{formatTime(game.timeRemaining)}</span>
         </div>
       {/if}

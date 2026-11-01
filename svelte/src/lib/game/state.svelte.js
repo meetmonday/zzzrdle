@@ -96,6 +96,8 @@ export class GameState {
     this.timeRemaining = $state(0);
     this.dailyTimerText = $state('--:--:--');
     this.shakeTick = $state(0);
+    this.floatText = $state(null);
+    this._floatSeed = 0;
   }
   // ---------- data ----------
   async boot() {
@@ -571,6 +573,7 @@ export class GameState {
     this.switchingRound = true;
     const comboText = ta.combo > 1 ? ` · COMBO ×${ta.combo}` : '';
     const bestText = prevBest > 0 && ta.points > prevBest && !this.newBestCelebrated ? ' · NEW BEST!' : '';
+    this.floatText = { id: ++this._floatSeed, text: `+${gained} · +${TIME_BONUS}s${comboText}${bestText}` };
     if (bestText) { this.newBestCelebrated = true; this.confettiTick++; }
     this.toast = { id: ++this._toastSeed, type: 'win', html: `
       <img class="toast__icon" src="${target.image}" alt="">
