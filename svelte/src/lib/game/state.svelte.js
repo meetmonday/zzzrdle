@@ -86,6 +86,8 @@ export class GameState {
     this.tutorialOpen = false;
 
     this.newBestCelebrated = false;
+    this.lastGuessId = null;
+    this.animateLast = false;
 
     this._dailyTimerHandle = null;
     this._timeTickerHandle = null;
@@ -276,6 +278,8 @@ export class GameState {
 
     const target = this.target;
     guesses.push(char);
+    this.lastGuessId = char.id;
+    this.animateLast = true;
     this.save();
 
     const isWin = target && char.id === target.id;
@@ -447,6 +451,8 @@ export class GameState {
   startPracticeGame() {
     this.state.practiceTarget = randomTarget(this.characters).id;
     this.state.practiceGuesses = [];
+    this.lastGuessId = null;
+    this.animateLast = false;
     this.mode = 'practice';
     this.ensureTargets();
     this.message = { text: '', type: '' };
@@ -455,6 +461,8 @@ export class GameState {
   startStreakGame() {
     this.state.streak.targetId = randomTarget(this.characters).id;
     this.state.streak.guesses = [];
+    this.lastGuessId = null;
+    this.animateLast = false;
     this.state.streak.solved = false;
     this.state.streak.lost = false;
     this.mode = 'streak';
@@ -480,9 +488,13 @@ export class GameState {
     this.hideSuggestions();
     this.switchingRound = false;
     this.newBestCelebrated = false;
+    this.lastGuessId = null;
+    this.animateLast = false;
     const ta = this.state.timeAttack;
     ta.guesses = [];
     ta.solvedIds = [];
+    this.lastGuessId = null;
+    this.animateLast = false;
     ta.points = 0;
     ta.solved = 0;
     ta.combo = 0;
@@ -576,6 +588,8 @@ export class GameState {
       ta.guesses = [];
       ta.targetId = this.pickTimeTarget().id;
       ta.roundStartedAt = Date.now();
+      this.lastGuessId = null;
+      this.animateLast = false;
       this.save();
       this.ensureTargets();
       this.message = { text: '', type: '' };
