@@ -127,6 +127,7 @@
                 onmousedown={(e) => { e.preventDefault(); onSelectSuggestion(s.name) }}
                 role="option"
                 tabindex={-1}
+                aria-selected={i === game.activeSuggestionIndex}
               >
                 <img class="suggestion-item__img" src={s.image} alt="" loading="lazy" onerror={(e) => { e.currentTarget.style.display = 'none' }} />
                 <span class="suggestion-item__name">{s.name}</span>
