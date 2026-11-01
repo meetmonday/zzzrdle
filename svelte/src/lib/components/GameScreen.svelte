@@ -15,6 +15,10 @@
     }, 0)
   })
 
+  onDestroy(() => {
+    game.stopDailyTimer()
+  })
+
   function back() {
     game.openMenu()
     onMenu()

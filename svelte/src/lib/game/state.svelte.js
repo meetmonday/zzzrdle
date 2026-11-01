@@ -641,4 +641,36 @@ export class GameState {
 
   // ---------- helpers for components ----------
   setModalOpen(v) { this.resultModalOpen = !!v; }
+
+  shareText() {
+    const today = todayString();
+    const guesses = this.guesses;
+    const target = this.target;
+    const won = this.won;
+    let header;
+    if (this.mode === 'daily') {
+      header = `ZZZrdle Daily ${today} ${won ? guesses.length + '/' + DAILY_ATTEMPTS : 'X/' + DAILY_ATTEMPTS}`;
+    } else if (this.mode === 'streak') {
+      header = `ZZZrdle Streak ${won ? guesses.length + '/' + DAILY_ATTEMPTS : 'X/' + DAILY_ATTEMPTS} · current streak: ${this.state.streak.current}`;
+    } else if (this.mode === 'time') {
+      const { points, solved, best } = this.state.timeAttack;
+      const rank = TIME_RANKS.find((r) => points >= r.min);
+      header = `ZZZrdle Time Attack — ${solved} agents · ${points} pts (${rank.rank}) · best: ${best}`;
+    } else {
+      header = `ZZZrdle Practice ${won ? '— solved in ' + guesses.length : ''}`;
+    }
+
+    const grid = this.mode === 'time'
+      ? ''
+      : guesses
+          .map((g) => ATTRIBUTES.map(({ key }) => (target && g[key] === target[key] ? '🟩' : '⬛')).join(''))
+          .join('\n');
+
+    return `${header}\n${grid ? grid + '\n' : ''}${typeof window !== 'undefined' ? window.location.href : ''}`;
+  }
+
+  stopDailyTimer() {
+    if (this._dailyTimerHandle) { clearInterval(this._dailyTimerHandle); this._dailyTimerHandle = null; }
+  }
+
 }

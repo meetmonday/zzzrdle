@@ -3,6 +3,28 @@
   import { DAILY_ATTEMPTS, TIME_RANKS } from '../game/constants.js'
 
   let won = $derived(game.done ? game.won : false)
+  let shareStatus = $state('')
+  async function shareResult() {
+    const text = game.shareText()
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(text)
+        shareStatus = 'Copied to clipboard!'
+        return
+      }
+    } catch {}
+    try {
+      const ta = document.createElement('textarea')
+      ta.value = text
+      document.body.appendChild(ta)
+      ta.select()
+      document.execCommand('copy')
+      document.body.removeChild(ta)
+      shareStatus = 'Copied to clipboard!'
+    } catch {
+      shareStatus = 'Copy failed.'
+    }
+  }
 
   function close() { game.resultModalOpen = false }
 
@@ -96,11 +118,11 @@
           </div>
         {/if}
 
-        <button id="share-btn" class="share-btn" type="button" onclick={() => { /* share stub */ }}>Share result</button>
+        <button id="share-btn" class="share-btn" type="button" onclick={shareResult}>Share result</button>
         <button id="practice-btn" class="share-btn share-btn--secondary" type="button" onclick={practiceAction}>
           {game.mode === 'daily' ? (won ? 'Play practice' : 'Try practice') : 'New game'}
         </button>
-        <p id="share-status" class="share-status" aria-live="polite"></p>
+        <p id="share-status" class="share-status" aria-live="polite">{shareStatus}</p>
       </div>
     </div>
   </div>
