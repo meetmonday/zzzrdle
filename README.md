@@ -27,7 +27,9 @@ Green tile = correct match, grey = wrong.
 
 ## Built with
 
-- Vanilla HTML/CSS/JS — no frameworks, no build step
+- Svelte + Vite
+- Global CSS retained from the original design
+- No runtime framework beyond the static bundle in `docs/`
 - Character data from [Zenless Zone Zero API](https://static.nanoka.cc/zzz/)
 - Icons synced from [tgdm/zzzip](https://github.com/tgdm/zzzip) image pack (`data/fetch-icons.mjs`)
 
@@ -48,3 +50,12 @@ The MIT license below applies to this project's source code only.
 ## License
 
 MIT
+
+## Development
+
+```bash
+npm install
+npm run dev
+npm run test
+npm run build
+```
