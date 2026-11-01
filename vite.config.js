@@ -5,4 +5,8 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: '/zzzrdle/',
   plugins: [svelte()],
+  build: {
+    outDir: 'docs',
+    emptyOutDir: true,
+  },
 })

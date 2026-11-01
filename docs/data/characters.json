@@ -1,0 +1,647 @@
+{
+  "meta": {
+    "version": "3.3",
+    "agents": 62,
+    "updated": "2026-10-30"
+  },
+  "factions": {
+    "Cunning Hares": "Cunning_Hares",
+    "New Eridu Defense Force": "Obol_Squad",
+    "Spook Shack": "Spook_Shack",
+    "Victoria Housekeeping Co.": "Victoria_Housekeeping",
+    "Sons of Calydon": "Sons_of_Calydon",
+    "Hollow Special Operations Section 6": "Hollow_Special_Operations_Section_6",
+    "Belobog Heavy Industries": "Belobog_Heavy_Industries",
+    "New Eridu Public Security": "Criminal_Investigation_Special_Response_Team",
+    "Mockingbird": "Mockingbird",
+    "Stars of Lyra": "Stars_of_Lyra",
+    "Krampus Compliance Authority": "Krampus_Compliance_Authority",
+    "Yunkui Summit": "Yunkui_Summit",
+    "Angels of Delusion": "Angels_of_Delusion",
+    "Phaethon": "Phaethon",
+    "Roscaelifer": "External_Strategy_Department",
+    "Covenant of Dayat": "Covenant_of_Dayat"
+  },
+  "chars": [
+    {
+      "id": 1011,
+      "name": "Anby",
+      "attribute": "Electric",
+      "specialty": "Stun",
+      "attackType": "Slash",
+      "faction": "Cunning Hares",
+      "rarity": "A",
+      "image": "IconRoleSelect01.png"
+    },
+    {
+      "id": 1021,
+      "name": "Nekomata",
+      "attribute": "Physical",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "Cunning Hares",
+      "rarity": "S",
+      "image": "IconRoleSelect11.png"
+    },
+    {
+      "id": 1031,
+      "name": "Nicole",
+      "attribute": "Ether",
+      "specialty": "Support",
+      "attackType": "Strike",
+      "faction": "Cunning Hares",
+      "rarity": "A",
+      "image": "IconRoleSelect12.png"
+    },
+    {
+      "id": 1041,
+      "name": "Soldier 11",
+      "attribute": "Fire",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "New Eridu Defense Force",
+      "rarity": "S",
+      "image": "IconRoleSelect05.png"
+    },
+    {
+      "id": 1051,
+      "name": "Yidhari",
+      "attribute": "Ice",
+      "specialty": "Rupture",
+      "attackType": "Strike",
+      "faction": "Spook Shack",
+      "rarity": "S",
+      "image": "IconRoleSelect52.png"
+    },
+    {
+      "id": 1061,
+      "name": "Corin",
+      "attribute": "Physical",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "Victoria Housekeeping Co.",
+      "rarity": "A",
+      "image": "IconRoleSelect09.png"
+    },
+    {
+      "id": 1071,
+      "name": "Caesar",
+      "attribute": "Physical",
+      "specialty": "Defense",
+      "attackType": "Slash",
+      "faction": "Sons of Calydon",
+      "rarity": "S",
+      "image": "IconRoleSelect25.png"
+    },
+    {
+      "id": 1081,
+      "name": "Billy",
+      "attribute": "Physical",
+      "specialty": "Attack",
+      "attackType": "Pierce",
+      "faction": "Cunning Hares",
+      "rarity": "A",
+      "image": "IconRoleSelect10.png"
+    },
+    {
+      "id": 1091,
+      "name": "Miyabi",
+      "attribute": "Ice",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Hollow Special Operations Section 6",
+      "rarity": "S",
+      "image": "IconRoleSelect13.png"
+    },
+    {
+      "id": 1101,
+      "name": "Koleda",
+      "attribute": "Fire",
+      "specialty": "Stun",
+      "attackType": "Strike",
+      "faction": "Belobog Heavy Industries",
+      "rarity": "S",
+      "image": "IconRoleSelect14.png"
+    },
+    {
+      "id": 1111,
+      "name": "Anton",
+      "attribute": "Electric",
+      "specialty": "Attack",
+      "attackType": "Pierce",
+      "faction": "Belobog Heavy Industries",
+      "rarity": "A",
+      "image": "IconRoleSelect15.png"
+    },
+    {
+      "id": 1121,
+      "name": "Ben",
+      "attribute": "Fire",
+      "specialty": "Defense",
+      "attackType": "Strike",
+      "faction": "Belobog Heavy Industries",
+      "rarity": "A",
+      "image": "IconRoleSelect16.png"
+    },
+    {
+      "id": 1131,
+      "name": "Soukaku",
+      "attribute": "Ice",
+      "specialty": "Support",
+      "attackType": "Slash",
+      "faction": "Hollow Special Operations Section 6",
+      "rarity": "A",
+      "image": "IconRoleSelect17.png"
+    },
+    {
+      "id": 1141,
+      "name": "Lycaon",
+      "attribute": "Ice",
+      "specialty": "Stun",
+      "attackType": "Strike",
+      "faction": "Victoria Housekeeping Co.",
+      "rarity": "S",
+      "image": "IconRoleSelect18.png"
+    },
+    {
+      "id": 1151,
+      "name": "Lucy",
+      "attribute": "Fire",
+      "specialty": "Support",
+      "attackType": "Strike",
+      "faction": "Sons of Calydon",
+      "rarity": "A",
+      "image": "IconRoleSelect27.png"
+    },
+    {
+      "id": 1161,
+      "name": "Lighter",
+      "attribute": "Fire",
+      "specialty": "Stun",
+      "attackType": "Strike",
+      "faction": "Sons of Calydon",
+      "rarity": "S",
+      "image": "IconRoleSelect26.png"
+    },
+    {
+      "id": 1171,
+      "name": "Burnice",
+      "attribute": "Fire",
+      "specialty": "Anomaly",
+      "attackType": "Pierce",
+      "faction": "Sons of Calydon",
+      "rarity": "S",
+      "image": "IconRoleSelect32.png"
+    },
+    {
+      "id": 1181,
+      "name": "Grace",
+      "attribute": "Electric",
+      "specialty": "Anomaly",
+      "attackType": "Pierce",
+      "faction": "Belobog Heavy Industries",
+      "rarity": "S",
+      "image": "IconRoleSelect20.png"
+    },
+    {
+      "id": 1191,
+      "name": "Ellen",
+      "attribute": "Ice",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "Victoria Housekeeping Co.",
+      "rarity": "S",
+      "image": "IconRoleSelect21.png"
+    },
+    {
+      "id": 1201,
+      "name": "Harumasa",
+      "attribute": "Electric",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "Hollow Special Operations Section 6",
+      "rarity": "S",
+      "image": "IconRoleSelect35.png"
+    },
+    {
+      "id": 1211,
+      "name": "Rina",
+      "attribute": "Electric",
+      "specialty": "Support",
+      "attackType": "Strike",
+      "faction": "Victoria Housekeeping Co.",
+      "rarity": "S",
+      "image": "IconRoleSelect22.png"
+    },
+    {
+      "id": 1221,
+      "name": "Yanagi",
+      "attribute": "Electric",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Hollow Special Operations Section 6",
+      "rarity": "S",
+      "image": "IconRoleSelect31.png"
+    },
+    {
+      "id": 1241,
+      "name": "Zhu Yuan",
+      "attribute": "Ether",
+      "specialty": "Attack",
+      "attackType": "Pierce",
+      "faction": "New Eridu Public Security",
+      "rarity": "S",
+      "image": "IconRoleSelect23.png"
+    },
+    {
+      "id": 1251,
+      "name": "Qingyi",
+      "attribute": "Electric",
+      "specialty": "Stun",
+      "attackType": "Strike",
+      "faction": "New Eridu Public Security",
+      "rarity": "S",
+      "image": "IconRoleSelect29.png"
+    },
+    {
+      "id": 1261,
+      "name": "Jane",
+      "attribute": "Physical",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "New Eridu Public Security",
+      "rarity": "S",
+      "image": "IconRoleSelect24.png"
+    },
+    {
+      "id": 1271,
+      "name": "Seth",
+      "attribute": "Electric",
+      "specialty": "Defense",
+      "attackType": "Slash",
+      "faction": "New Eridu Public Security",
+      "rarity": "A",
+      "image": "IconRoleSelect30.png"
+    },
+    {
+      "id": 1281,
+      "name": "Piper",
+      "attribute": "Physical",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Sons of Calydon",
+      "rarity": "A",
+      "image": "IconRoleSelect28.png"
+    },
+    {
+      "id": 1291,
+      "name": "Hugo",
+      "attribute": "Ice",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "Mockingbird",
+      "rarity": "S",
+      "image": "IconRoleSelect42.png"
+    },
+    {
+      "id": 1301,
+      "name": "Orphie & Magus",
+      "attribute": "Fire",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "New Eridu Defense Force",
+      "rarity": "S",
+      "image": "IconRoleSelect49.png"
+    },
+    {
+      "id": 1311,
+      "name": "Astra Yao",
+      "attribute": "Ether",
+      "specialty": "Support",
+      "attackType": "Strike",
+      "faction": "Stars of Lyra",
+      "rarity": "S",
+      "image": "IconRoleSelect36.png"
+    },
+    {
+      "id": 1321,
+      "name": "Evelyn",
+      "attribute": "Fire",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "Stars of Lyra",
+      "rarity": "S",
+      "image": "IconRoleSelect37.png"
+    },
+    {
+      "id": 1331,
+      "name": "Vivian",
+      "attribute": "Ether",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Mockingbird",
+      "rarity": "S",
+      "image": "IconRoleSelect41.png"
+    },
+    {
+      "id": 1341,
+      "name": "Zhao",
+      "attribute": "Ice",
+      "specialty": "Defense",
+      "attackType": "Slash",
+      "faction": "Krampus Compliance Authority",
+      "rarity": "S",
+      "image": "IconRoleSelect56.png"
+    },
+    {
+      "id": 1351,
+      "name": "Pulchra",
+      "attribute": "Physical",
+      "specialty": "Stun",
+      "attackType": "Slash",
+      "faction": "Sons of Calydon",
+      "rarity": "A",
+      "image": "IconRoleSelect38.png"
+    },
+    {
+      "id": 1361,
+      "name": "Trigger",
+      "attribute": "Electric",
+      "specialty": "Stun",
+      "attackType": "Pierce",
+      "faction": "New Eridu Defense Force",
+      "rarity": "S",
+      "image": "IconRoleSelect39.png"
+    },
+    {
+      "id": 1371,
+      "name": "Yixuan",
+      "attribute": "Ether",
+      "specialty": "Rupture",
+      "attackType": "Strike",
+      "faction": "Yunkui Summit",
+      "rarity": "S",
+      "image": "IconRoleSelect44.png"
+    },
+    {
+      "id": 1381,
+      "name": "Soldier 0 - Anby",
+      "attribute": "Electric",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "New Eridu Defense Force",
+      "rarity": "S",
+      "image": "IconRoleSelect40.png"
+    },
+    {
+      "id": 1391,
+      "name": "Ju Fufu",
+      "attribute": "Fire",
+      "specialty": "Stun",
+      "attackType": "Strike",
+      "faction": "Yunkui Summit",
+      "rarity": "S",
+      "image": "IconRoleSelect43.png"
+    },
+    {
+      "id": 1401,
+      "name": "Alice",
+      "attribute": "Physical",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Spook Shack",
+      "rarity": "S",
+      "image": "IconRoleSelect46.png"
+    },
+    {
+      "id": 1411,
+      "name": "Yuzuha",
+      "attribute": "Physical",
+      "specialty": "Support",
+      "attackType": "Strike",
+      "faction": "Spook Shack",
+      "rarity": "S",
+      "image": "IconRoleSelect47.png"
+    },
+    {
+      "id": 1421,
+      "name": "Pan Yinhu",
+      "attribute": "Physical",
+      "specialty": "Defense",
+      "attackType": "Strike",
+      "faction": "Yunkui Summit",
+      "rarity": "A",
+      "image": "IconRoleSelect45.png"
+    },
+    {
+      "id": 1431,
+      "name": "Ye Shunguang",
+      "attribute": "Physical",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "Yunkui Summit",
+      "rarity": "S",
+      "image": "IconRoleSelect55.png"
+    },
+    {
+      "id": 1441,
+      "name": "Manato",
+      "attribute": "Fire",
+      "specialty": "Rupture",
+      "attackType": "Slash",
+      "faction": "Spook Shack",
+      "rarity": "A",
+      "image": "IconRoleSelect51.png"
+    },
+    {
+      "id": 1451,
+      "name": "Lucia",
+      "attribute": "Ether",
+      "specialty": "Support",
+      "attackType": "Strike",
+      "faction": "Spook Shack",
+      "rarity": "S",
+      "image": "IconRoleSelect50.png"
+    },
+    {
+      "id": 1461,
+      "name": "Seed",
+      "attribute": "Electric",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "New Eridu Defense Force",
+      "rarity": "S",
+      "image": "IconRoleSelect48.png"
+    },
+    {
+      "id": 1471,
+      "name": "Banyue",
+      "attribute": "Fire",
+      "specialty": "Rupture",
+      "attackType": "Strike",
+      "faction": "Krampus Compliance Authority",
+      "rarity": "S",
+      "image": "IconRoleSelect53.png"
+    },
+    {
+      "id": 1481,
+      "name": "Dialyn",
+      "attribute": "Physical",
+      "specialty": "Stun",
+      "attackType": "Slash",
+      "faction": "Krampus Compliance Authority",
+      "rarity": "S",
+      "image": "IconRoleSelect54.png"
+    },
+    {
+      "id": 1491,
+      "name": "Sunna",
+      "attribute": "Physical",
+      "specialty": "Support",
+      "attackType": "Strike",
+      "faction": "Angels of Delusion",
+      "rarity": "S",
+      "image": "IconRoleSelect58.png"
+    },
+    {
+      "id": 1501,
+      "name": "Aria",
+      "attribute": "Ether",
+      "specialty": "Anomaly",
+      "attackType": "Strike",
+      "faction": "Angels of Delusion",
+      "rarity": "S",
+      "image": "IconRoleSelect57.png"
+    },
+    {
+      "id": 1511,
+      "name": "Nangong Yu",
+      "attribute": "Ether",
+      "specialty": "Stun",
+      "attackType": "Strike",
+      "faction": "Angels of Delusion",
+      "rarity": "S",
+      "image": "IconRoleSelect59.png"
+    },
+    {
+      "id": 1521,
+      "name": "Cissia",
+      "attribute": "Electric",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "New Eridu Public Security",
+      "rarity": "S",
+      "image": "IconRoleSelect60.png"
+    },
+    {
+      "id": 1531,
+      "name": "Starlight - Billy",
+      "attribute": "Physical",
+      "specialty": "Rupture",
+      "attackType": "Slash",
+      "faction": "Cunning Hares",
+      "rarity": "S",
+      "image": "IconRoleSelect62.png"
+    },
+    {
+      "id": 1541,
+      "name": "Promeia",
+      "attribute": "Ice",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Krampus Compliance Authority",
+      "rarity": "S",
+      "image": "IconRoleSelect61.png"
+    },
+    {
+      "id": 1551,
+      "name": "Pyrois",
+      "attribute": "Ether",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "Phaethon",
+      "rarity": "S",
+      "image": "IconRoleSelect63.png"
+    },
+    {
+      "id": 1561,
+      "name": "Velina",
+      "attribute": "Wind",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Roscaelifer",
+      "rarity": "S",
+      "image": "IconRoleSelect64.png"
+    },
+    {
+      "id": 1571,
+      "name": "Norma",
+      "attribute": "Fire",
+      "specialty": "Stun",
+      "attackType": "Strike",
+      "faction": "Roscaelifer",
+      "rarity": "S",
+      "image": "IconRoleSelect65.png"
+    },
+    {
+      "id": 1581,
+      "name": "Remielle",
+      "attribute": "Lumiflux",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Covenant of Dayat",
+      "rarity": "S",
+      "image": "IconRoleSelect67.png"
+    },
+    {
+      "id": 1591,
+      "name": "Sigrid",
+      "attribute": "Ice",
+      "specialty": "Attack",
+      "attackType": "Pierce",
+      "faction": "Roscaelifer",
+      "rarity": "S",
+      "image": "IconRoleSelect66.png"
+    },
+    {
+      "id": 1611,
+      "name": "Claret",
+      "attribute": "Electric",
+      "specialty": "Armorer",
+      "attackType": "Slash",
+      "faction": "Roscaelifer",
+      "rarity": "S",
+      "image": "IconRoleSelect1611.png"
+    },
+    {
+      "id": 1621,
+      "name": "Roxy",
+      "attribute": "Wind",
+      "specialty": "Stun",
+      "attackType": "Strike",
+      "faction": "Roscaelifer",
+      "rarity": "S",
+      "image": "IconRoleSelect68.png"
+    },
+    {
+      "id": 1631,
+      "name": "Severian",
+      "attribute": "Wind",
+      "specialty": "Attack",
+      "attackType": "Slash",
+      "faction": "New Eridu Public Security",
+      "rarity": "S",
+      "image": "IconRoleSelect1631.png"
+    },
+    {
+      "id": 1641,
+      "name": "Phoenix",
+      "attribute": "Fire",
+      "specialty": "Anomaly",
+      "attackType": "Slash",
+      "faction": "Krampus Compliance Authority",
+      "rarity": "S",
+      "image": "IconRoleSelect1641.png"
+    }
+  ]
+}
