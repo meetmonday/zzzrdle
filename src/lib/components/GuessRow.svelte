@@ -43,8 +43,8 @@
       data-correct={correct}
     >
       {#if special}
-        <video class="tile__video tile__video--start" src={`demo/unit/Gacha_${guess.rarity}_Start_anim.webm`} muted playsinline preload="auto"></video>
-        <video class="tile__video tile__video--loop" src={`demo/unit/Gacha_${guess.rarity}_Loop_anim.webm`} muted loop playsinline preload="auto" hidden></video>
+        <video class="tile__video tile__video--start" src={`rarity/Gacha_${guess.rarity}_Start_anim.webm`} muted playsinline preload="auto"></video>
+        <video class="tile__video tile__video--loop" src={`rarity/Gacha_${guess.rarity}_Loop_anim.webm`} muted loop playsinline preload="auto" hidden></video>
       {:else}
         <img class="tile__icon" src={`static${guess[`${key}Icon`] || ''}`} alt="" loading="lazy" onerror={(e) => { e.currentTarget.style.display = 'none' }} />
         {#if key !== 'rarity'}
