@@ -60,44 +60,43 @@ function saveStateInstance(s) {
 
 export class GameState {
   constructor() {
-    this.state = loadState();
-    this.mode = 'daily';
+    this.state = $state(loadState());
+    this.mode = $state('daily');
 
-    this.characters = [];
-    this.meta = null;
-    this.loaded = false;
-    this.loadError = '';
+    this.characters = $state([]);
+    this.meta = $state(null);
+    this.loaded = $state(false);
+    this.loadError = $state('');
 
-    this.suggestions = [];
-    this.activeSuggestionIndex = -1;
+    this.suggestions = $state([]);
+    this.activeSuggestionIndex = $state(-1);
 
-    this.switchingRound = false;
-    this.countdownActive = false;
-    this.countdownToken = 0;
-    this.countdownText = '';
-    this.restartArmed = false;
+    this.switchingRound = $state(false);
+    this.countdownActive = $state(false);
+    this.countdownToken = $state(0);
+    this.countdownText = $state('');
+    this.restartArmed = $state(false);
 
-    this.message = { text: '', type: '' };
+    this.message = $state({ text: '', type: '' });
 
     // transient ui requests (components react)
-    this.toast = null;
-    this.confettiTick = 0;
-    this.resultModalOpen = false;
-    this.tutorialOpen = false;
+    this.toast = $state(null);
+    this.confettiTick = $state(0);
+    this.resultModalOpen = $state(false);
+    this.tutorialOpen = $state(false);
 
-    this.newBestCelebrated = false;
-    this.lastGuessId = null;
-    this.animateLast = false;
+    this.newBestCelebrated = $state(false);
+    this.lastGuessId = $state(null);
+    this.animateLast = $state(false);
 
-    this._dailyTimerHandle = null;
+    this._dailyTimerHandle = $state(null);
     this._timeTickerHandle = null;
 
     this._toastSeed = 0;
-    this.timeRemaining = 0;
-    this.dailyTimerText = '--:--:--';
-    this.shakeTick = 0;
+    this.timeRemaining = $state(0);
+    this.dailyTimerText = $state('--:--:--');
+    this.shakeTick = $state(0);
   }
-
   // ---------- data ----------
   async boot() {
     try {
