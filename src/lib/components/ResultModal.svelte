@@ -3,6 +3,16 @@
   import { DAILY_ATTEMPTS, TIME_RANKS } from '../game/constants.js'
 
   let won = $derived(game.done ? game.won : false)
+  function trapFocus(e) {
+    if (e.key !== 'Tab') return
+    const modal = e.currentTarget.querySelector('.modal')
+    if (!modal) return
+    const nodes = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+    if (!nodes.length) return
+    const first = nodes[0]; const last = nodes[nodes.length-1]
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
+  }
   let shareStatus = $state('')
   async function shareResult() {
     const text = game.shareText()
@@ -49,7 +59,7 @@
 </script>
 
 {#if game.resultModalOpen && game.target}
-  <div id="overlay" class="overlay is-visible" onclick={(e) => { if (e.target === e.currentTarget) close() }} role="dialog" aria-modal="true">
+  <div id="overlay" class="overlay is-visible" onclick={(e) => { if (e.target === e.currentTarget) close() }} onkeydown={trapFocus} role="dialog" aria-modal="true" tabindex="-1">
     <div class="modal">
       <button id="modal-close" class="modal__close" type="button" aria-label="Close" onclick={close}>×</button>
       <div class="modal__inner">

@@ -1,5 +1,15 @@
 <script>
   import { game } from '../game/index.svelte.js'
+  function trapFocus(e) {
+    if (e.key !== 'Tab') return
+    const modal = e.currentTarget.querySelector('.modal')
+    if (!modal) return
+    const nodes = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+    if (!nodes.length) return
+    const first = nodes[0]; const last = nodes[nodes.length-1]
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
+  }
 
   function close() {
     game.tutorialOpen = false
@@ -8,7 +18,7 @@
 </script>
 
 {#if game.tutorialOpen}
-  <div id="tutorial-overlay" class="overlay tutorial-overlay is-visible" onclick={(e) => { if (e.target === e.currentTarget) close() }}>
+  <div id="tutorial-overlay" class="overlay tutorial-overlay is-visible" onclick={(e) => { if (e.target === e.currentTarget) close() }} onkeydown={trapFocus}>
     <div class="modal tutorial" role="dialog" aria-modal="true" aria-labelledby="tutorial-title">
       <button id="tutorial-close" class="modal__close" type="button" aria-label="Close" onclick={close}>×</button>
       <div class="modal__inner">
