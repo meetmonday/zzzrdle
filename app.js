@@ -369,6 +369,31 @@
     return tile;
   }
 
+  // Play the gacha rarity animation: show the start clip once, then switch to
+  // the looping clip when it ends (same flow as demo/index.html).
+  function armRarityVideo(tile) {
+    const start = tile.querySelector('.tile__video--start');
+    const loop = tile.querySelector('.tile__video--loop');
+    if (!start || !loop) return;
+
+    start.addEventListener('ended', () => {
+      start.hidden = true;
+      loop.hidden = false;
+      loop.currentTime = 0;
+      loop.play().catch(() => {});
+    });
+
+    const play = () => {
+      if (document.hidden) return;
+      start.hidden = false;
+      start.currentTime = 0;
+      start.play().catch(() => {});
+    };
+
+    start.addEventListener('loadedmetadata', play, { once: true });
+    document.addEventListener('visibilitychange', play);
+  }
+
   function renderGuessRow(guess, target, animate = false, step = 300) {
     const row = document.createElement('article');
     row.className = 'guess-row';
@@ -385,10 +410,25 @@
       const correct = target[key] === value;
       const iconKey = `${key}Icon`;
       const icon = guess[iconKey] || '';
-      const tile = createTile(`
-        <img class="tile__icon" src="static${escapeAttr(icon)}" alt="" loading="lazy" onerror="this.style.display='none'">
-        ${key !== 'rarity' ? `<span class="tile__label">${escapeHtml(value)}</span>` : ''}
-      `, []);
+
+      let content;
+      let classes = [];
+      if (key === 'rarity' && (guess.rarity === 'S' || guess.rarity === 'A')) {
+        // Animated gacha rarity (start → loop), matching demo/index.html.
+        content = `
+          <video class="tile__video tile__video--start" src="demo/unit/Gacha_${escapeAttr(guess.rarity)}_Start_anim.webm" muted playsinline preload="auto"></video>
+          <video class="tile__video tile__video--loop" src="demo/unit/Gacha_${escapeAttr(guess.rarity)}_Loop_anim.webm" muted loop playsinline preload="auto" hidden></video>
+        `;
+        classes = ['tile--rarity'];
+      } else {
+        content = `
+          <img class="tile__icon" src="static${escapeAttr(icon)}" alt="" loading="lazy" onerror="this.style.display='none'">
+          ${key !== 'rarity' ? `<span class="tile__label">${escapeHtml(value)}</span>` : ''}
+        `;
+      }
+
+      const tile = createTile(content, classes);
+      if (key === 'rarity' && classes.length) armRarityVideo(tile);
       tile.dataset.correct = correct;
       row.appendChild(tile);
       attributeTiles.push(tile);
